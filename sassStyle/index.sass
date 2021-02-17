@@ -1,0 +1,92 @@
+$colors: (#341C1C, #C4A287, #B07156, white, black)
+$fontSizes: 12, 14, 18, 24, 32
+$fontFamily: "arial"
+
+.navDesk
+    width: 100vw
+    height: 64px
+    background-color: nth($colors, 1)
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    align-items: center
+
+    .nav-logo
+        color: white
+
+    ol
+        width: 400px
+        height: 100%
+        display: flex
+        justify-content: space-between
+        padding: 0
+        list-style-type: none
+        align-items: center
+        margin: 0
+
+        li
+            margin: 0
+            padding: 0
+            height: 100%
+
+            a
+                color: nth($colors, 4)
+                padding: 0 16px
+                height: 100%
+                text-decoration: none
+                display: flex
+                align-items: center
+                &:hover
+                    text-decoration: underline
+    .hamburger
+        display: none
+
+.navPhone
+    width: 100vw
+    height: 64px
+    background-color: nth($colors, 1)
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    ol
+        position: fixed
+        margin: 0
+        width: 100vw
+        height: 100vh
+        background-color: nth($colors, 1)
+        list-style-type: none
+
+        li
+            padding: 32px 0
+
+            a
+                color: nth($colors, 4)
+                text-decoration: none
+
+    .hamburger
+        color: white
+
+.showPhoneLink
+    top: 0px
+    animation: showLink 0.33s
+
+.hidePhoneLink
+    top: -100vh
+    animation: hideLink 0.33s
+
+body
+    padding: 0
+    margin: 0
+
+@keyframes showLink
+    0%
+        top: -100vh
+    100%
+        top: 0
+
+@keyframes hideLink
+    0%
+        top: 0
+    100%
+        top: -100vh

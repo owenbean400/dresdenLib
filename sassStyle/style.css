@@ -1,0 +1,102 @@
+.navDesk {
+  width: 100vw;
+  height: 64px;
+  background-color: #341C1C;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.navDesk .nav-logo {
+  color: white;
+}
+.navDesk ol {
+  width: 400px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  list-style-type: none;
+  align-items: center;
+  margin: 0;
+}
+.navDesk ol li {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.navDesk ol li a {
+  color: white;
+  padding: 0 16px;
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.navDesk ol li a:hover {
+  text-decoration: underline;
+}
+.navDesk .hamburger {
+  display: none;
+}
+
+.navPhone {
+  width: 100vw;
+  height: 64px;
+  background-color: #341C1C;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navPhone ol {
+  position: fixed;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #341C1C;
+  list-style-type: none;
+}
+.navPhone ol li {
+  padding: 32px 0;
+}
+.navPhone ol li a {
+  color: white;
+  text-decoration: none;
+}
+.navPhone .hamburger {
+  color: white;
+}
+
+.showPhoneLink {
+  top: 0px;
+  animation: showLink 0.33s;
+}
+
+.hidePhoneLink {
+  top: -100vh;
+  animation: hideLink 0.33s;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes showLink {
+  0% {
+    top: -100vh;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes hideLink {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -100vh;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

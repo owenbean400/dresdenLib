@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <link rel="stylesheet" href="sassStyle/style.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <nav id="navbar" class="bg-dark" v-bind:class="phoneClass">
+            <a class="nav-logo">BAPL</a>
+            <ol v-bind:class="toggleShowPhoneNav">
+                <div v-on:click="hideLinks" class="hamburger">X</div>
+                <li v-for="(link, name) in links"><a v-bind:href="link">{{name}}</a></li>
+            </ol>
+            <div v-on:click="showLinks" class="hamburger">ham</div>
+        </nav>
+        <script src="navbar.js"></script>
+    </body>
+</html>
