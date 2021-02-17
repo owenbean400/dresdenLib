@@ -7,8 +7,10 @@
   justify-content: space-between;
   align-items: center;
 }
-.navDesk .nav-logo {
+.navDesk #navlogo {
   color: white;
+  font-size: 24px;
+  margin-left: 16px;
 }
 .navDesk ol {
   width: 400px;
@@ -48,6 +50,11 @@
   justify-content: space-between;
   align-items: center;
 }
+.navPhone #navlogo {
+  color: white;
+  font-size: 24px;
+  margin-left: 16px;
+}
 .navPhone ol {
   position: fixed;
   margin: 0;
@@ -57,14 +64,26 @@
   list-style-type: none;
 }
 .navPhone ol li {
-  padding: 32px 0;
+  padding: 8px 0;
 }
 .navPhone ol li a {
   color: white;
   text-decoration: none;
 }
 .navPhone .hamburger {
+  display: flex;
+  flex-direction: column;
+  height: 32px;
+  align-items: space-between;
+  justify-content: space-between;
+  margin-right: 16px;
   color: white;
+  font-size: 32px;
+}
+.navPhone .hamburger div {
+  background-color: white;
+  width: 32px;
+  height: 5px;
 }
 
 .showPhoneLink {
@@ -75,6 +94,10 @@
 .hidePhoneLink {
   top: -100vh;
   animation: hideLink 0.33s;
+}
+
+.none {
+  display: none;
 }
 
 body {

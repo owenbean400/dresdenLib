@@ -7,6 +7,7 @@ let links = {
 }
 
 const PHONE_SIZE = 760;
+const NAV_HEAD_SIZE = 500;
 
 let template = "";
 
@@ -15,7 +16,9 @@ var navbar = new Vue({
     data: {
         links,
         isPhone: (window.innerWidth <= PHONE_SIZE),
-        showPhoneLinks: true,
+        showPhoneLinks: false,
+        loaded: false,
+        logoName: (window.innerWidth <= NAV_HEAD_SIZE) ? "BAPL" : "Bridge Academy Public Library"
     },
     created() {
         window.addEventListener("resize", this.updateNav);
@@ -27,14 +30,16 @@ var navbar = new Vue({
         updateNav(event) {
             this.isPhone = (window.innerWidth <= PHONE_SIZE);
             this.showPhoneLinks = (window.innerWidth <= PHONE_SIZE) ? this.showPhoneLinks : false;
+            this.logoName = (window.innerWidth <= NAV_HEAD_SIZE) ? "BAPL" : "Bridge Academy Public Library"
         },
         showLinks() {
             console.log("open");
-            this.showPhoneLinks = false;
+            this.loaded = true,
+            this.showPhoneLinks = true;
         },
         hideLinks() {
             console.log("close");
-            this.showPhoneLinks = true;
+            this.showPhoneLinks = false;
         }
     },
     computed: {
@@ -42,7 +47,14 @@ var navbar = new Vue({
             return this.isPhone ? 'navPhone' : 'navDesk';
         },
         toggleShowPhoneNav: function() {
-            return this.showPhoneLinks ? 'hidePhoneLink' : 'showPhoneLink';
+            let classCss;
+            if(!this.loaded){
+                classCss = 'none'
+            }
+            else{
+                classCss = this.showPhoneLinks ? 'showPhoneLink' : 'hidePhoneLink'
+            }
+            return classCss;
         }
     }
 

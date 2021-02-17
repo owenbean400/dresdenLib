@@ -11,8 +11,10 @@ $fontFamily: "arial"
     justify-content: space-between
     align-items: center
 
-    .nav-logo
+    #navlogo
         color: white
+        font-size: 24px
+        margin-left: 16px
 
     ol
         width: 400px
@@ -49,6 +51,11 @@ $fontFamily: "arial"
     justify-content: space-between
     align-items: center
 
+    #navlogo
+        color: white
+        font-size: 24px
+        margin-left: 16px
+
     ol
         position: fixed
         margin: 0
@@ -58,14 +65,26 @@ $fontFamily: "arial"
         list-style-type: none
 
         li
-            padding: 32px 0
+            padding: 8px 0
 
             a
                 color: nth($colors, 4)
                 text-decoration: none
 
     .hamburger
+        display: flex
+        flex-direction: column
+        height: 32px
+        align-items: space-between
+        justify-content: space-between
+        margin-right: 16px
         color: white
+        font-size: 32px
+
+        div
+            background-color: white
+            width: 32px
+            height: 5px
 
 .showPhoneLink
     top: 0px
@@ -74,6 +93,9 @@ $fontFamily: "arial"
 .hidePhoneLink
     top: -100vh
     animation: hideLink 0.33s
+
+.none
+    display: none
 
 body
     padding: 0
