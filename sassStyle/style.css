@@ -83,6 +83,13 @@
   justify-content: space-between;
   align-items: center;
 }
+.navPhone .link-container .phoneNavbar .x {
+  height: 32px;
+  width: 50px;
+  color: white;
+  font-size: 32;
+  cursor: pointer;
+}
 .navPhone .link-container .links {
   height: calc( 100% - 80px );
   overflow: auto;
@@ -109,11 +116,13 @@
   margin-right: 16px;
   color: white;
   font-size: 32px;
+  cursor: pointer;
 }
 .navPhone .hamburger div {
   background-color: white;
-  width: 32px;
-  height: 5px;
+  width: 40px;
+  height: 4px;
+  border-radius: 4px;
 }
 
 .showPhoneLink {
