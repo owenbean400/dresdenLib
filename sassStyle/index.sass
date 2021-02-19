@@ -3,7 +3,7 @@ $fontSizes: 12, 14, 18, 24, 32
 $fontFamily: "arial"
 
 .navDesk
-    width: 100vw
+    width: 100%
     height: 64px
     background-color: nth($colors, 1)
     display: flex
@@ -11,12 +11,12 @@ $fontFamily: "arial"
     justify-content: space-between
     align-items: center
 
-    #navlogo
+    .navlogo
         color: white
         font-size: 24px
         margin-left: 16px
 
-    ol
+    .link-container
         width: 400px
         height: 100%
         display: flex
@@ -26,50 +26,72 @@ $fontFamily: "arial"
         align-items: center
         margin: 0
 
-        li
-            margin: 0
-            padding: 0
-            height: 100%
+        .links
 
-            a
-                color: nth($colors, 4)
-                padding: 0 16px
-                height: 100%
-                text-decoration: none
+            ol
+                width: 100%
                 display: flex
-                align-items: center
-                &:hover
-                    text-decoration: underline
+                flex-wrap: wrap
+                justify-content: space-between
+                padding: 0
+                list-style-type: none
+
+                a
+                    color: nth($colors, 4)
+                    padding: 0 16px
+                    height: 100%
+                    text-decoration: none
+                    display: flex
+                    align-items: center
+                    &:hover
+                        text-decoration: underline
     .hamburger
         display: none
 
 .navPhone
-    width: 100vw
+    width: 100%
     height: 64px
     background-color: nth($colors, 1)
     display: flex
     justify-content: space-between
     align-items: center
 
-    #navlogo
+    .navlogo
         color: white
         font-size: 24px
         margin-left: 16px
 
-    ol
+    .link-container
         position: fixed
         margin: 0
         width: 100vw
         height: 100vh
         background-color: nth($colors, 1)
-        list-style-type: none
 
-        li
-            padding: 8px 0
+        .phoneNavbar
+            width: 100%
+            height: 64px
+            display: flex
+            flex-wrap: wrap
+            justify-content: space-between
+            align-items: center
 
-            a
-                color: nth($colors, 4)
-                text-decoration: none
+        .links
+            height: calc( 100% - 80px )
+            overflow: auto
+
+            ol
+                height: auto
+                list-style-type: none
+                padding: 0
+
+                li
+                    padding: 16px 16px
+                    font-size: nth($fontSizes, 3)
+
+                    a
+                        color: nth($colors, 4)
+                        text-decoration: none
 
     .hamburger
         display: flex
@@ -100,6 +122,17 @@ $fontFamily: "arial"
 body
     padding: 0
     margin: 0
+
+.headerImage
+    height: 300px
+    width: 100%
+    background-image: url("../librarySketch.gif")
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center top
+
+p
+    padding: 8 16px
 
 @keyframes showLink
     0%

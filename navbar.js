@@ -48,7 +48,7 @@ var navbar = new Vue({
         },
         toggleShowPhoneNav: function() {
             let classCss;
-            if(!this.loaded){
+            if(!this.loaded && window.innerWidth <= PHONE_SIZE){
                 classCss = 'none'
             }
             else{
