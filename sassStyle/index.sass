@@ -1,4 +1,4 @@
-$colors: (#341C1C, #C4A287, #B07156, white, black)
+$colors: (#341C1C, #C4A287, #B07156, white, black, #545454)
 $fontSizes: 12, 14, 18, 24, 32
 $fontFamily: "arial"
 
@@ -151,7 +151,7 @@ body
     background-repeat: no-repeat
     background-position: center top
 
-p
+.contentRandy
     padding: 8 16px
 
 @keyframes showLink
@@ -165,3 +165,59 @@ p
         top: 0
     100%
         top: -100vh
+
+.itemsContainer
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+    margin: 32px 0
+
+    .itemContainer
+        margin: 16px
+        width: 280px
+        @media screen and ( max-width: 640px )
+            width: 100%
+        @media screen and ( max-width: 961px ) and ( min-width: 640px )
+            width: 280px
+        @media screen and ( min-width: 961px )
+            width: 400px
+
+        .itemTitle
+            background-color: nth($colors, 2)
+            padding: 8px 0 8px 8px
+            font-weight: 700
+            font-size: nth($fontSizes, 4)
+
+        .itemInfo
+            background-color: whitesmoke
+            padding: 12px 16px 12px 12px
+            border-bottom: solid lightgray 1px
+            border-right: solid lightgray 1px
+            border-left: solid lightgray 1px
+            overflow: hidden
+
+            .infoTitle
+                margin: 0 0 4px 0
+                font-size: nth($fontSizes, 3)
+
+            .infoInfo
+                margin: 0
+                font-size: nth($fontSizes, 2)
+
+            .infoLink
+                margin: 0
+                font-size: nth($fontSizes, 1)
+                float: right
+                display: block
+                color: nth($colors, 6)
+                text-decoration: none
+                &:hover
+                    text-decoration: underline
+
+        .itemLink
+            float: right
+            margin-top: 4px
+            color: nth($colors, 6)
+            text-decoration: none
+            &:hover
+                text-decoration: underline

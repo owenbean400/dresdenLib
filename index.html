@@ -28,7 +28,19 @@
         </div>
         <h1 style="text-align: center;">Welcome to Bridge Academy Public Library</h1>
         <h3 style="text-align: center;">currently in development</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium malesuada lorem non consequat. Curabitur auctor
+        <div id=mainInfo class="itemsContainer">
+            <div v-for="(item, name) in items" class="itemContainer">
+                <div class="itemTitle" class="itemTitle">{{name}}</div>
+                <div v-for="info in item.stuff" class="itemInfo">
+                    <h5 class="infoTitle">{{info.title}}</h5>
+                    <p class="infoInfo">{{info.info}}</p>
+                    <a v-bind:href="info.link" class="infoLink">More info</a>
+                </div>
+                <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
+            </div>
+        </div>
+        <script src="main.js"></script>
+        <p class="contentRandy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium malesuada lorem non consequat. Curabitur auctor
         maximus mi, vitae tristique lacus ornare non. Etiam eleifend rutrum ante sit amet congue. In euismod, massa vitae mattis
         sollicitudin, risus augue dictum nunc, elementum varius est purus ac mauris. Etiam vehicula vehicula blandit.
         Pellentesque vitae ullamcorper libero. Praesent dictum nec ligula a viverra. Fusce lacinia mi sed nisi pellentesque, sed
