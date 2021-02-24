@@ -5,30 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <nav id="navbar" class="bg-dark" v-bind:class="phoneClass">
-            <a class="navlogo">{{logoName}}</a>
-            <div class="link-container" v-bind:class="toggleShowPhoneNav">
-                <div class="phoneNavbar" v-bind:class="{none: !isPhone}">
-                    <a class="navlogo">{{logoName}}</a>
-                    <div v-on:click="hideLinks" class="x">X</div>
-                </div>
-                <div class="links">
-                    <ol>
-                        <li v-for="(link, name) in links"><a v-bind:href="link">{{name}}</a></li>
-                    </ol>
-                </div>
-            </div>
-            <div v-on:click="showLinks" class="hamburger">
-                <div v-for="i in 3"></div>
-            </div>
-        </nav>
+        <div id="navbar">
+            <Navbar></Navbar>
+        </div>
         <script src="navbar.js"></script>
         <div class="headerImage">
 
         </div>
         <h1 style="text-align: center;">Welcome to Bridge Academy Public Library</h1>
         <h3 style="text-align: center;">currently in development</h3>
-        <div id=mainInfo class="itemsContainer">
+        <div id="mainInfo" class="itemsContainer">
             <div v-for="(item, name) in items" class="itemContainer">
                 <div class="itemTitle" class="itemTitle">{{name}}</div>
                 <div v-for="info in item.stuff" class="itemInfo">
@@ -37,6 +23,18 @@
                     <a v-bind:href="info.link" class="infoLink">More info</a>
                 </div>
                 <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
+            </div>
+        </div>
+        <div id="about">
+            <div v-for="(item, name) in about" class="itemContainer">
+                <div class="itemTitle">{{name}}</div>
+                <div v-if="isOpen(dayNumToString(date.getDay()))">We're Open Now</div>
+                <table width="100%" style="border-collapse:collapse;">
+                    <tr v-for="(time, day) in item.time"  v-bind:class="{bold : isSameDay(day), greenbc : isOpen(day)}">
+                        <td>{{day}}</td>
+                        <td>{{time}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
         <script src="main.js"></script>

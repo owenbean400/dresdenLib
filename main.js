@@ -41,9 +41,72 @@ let items = {
     }
 }
 
+let about = {
+    Open: {
+        time: {
+            Sunday: "Closed",
+            Monday: "Closed",
+            Tuesday: "1:30pm - 7:00pm",
+            Wednesday: "Closed",
+            Thursday: "1:30pm - 7:00pm",
+            Friday: "Closed",
+            Saturday: "9:00am - 12:00pm"
+        }
+    }
+}
+
 var mainInfo = new Vue({
     el: "#mainInfo",
     data: {
         items
+    }
+})
+
+var aboutInfo = new Vue({
+    el: "#about",
+    data: {
+        about,
+        date: new Date()
+    },
+    methods: {
+        isSameDay: function(day) {
+            for(let i = 0; i < Object.keys(about.Open.time).length; i++){
+                if(day == Object.keys(about.Open.time)[i]){
+                    if(this.date.getDay() == i){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        },
+        isOpen: function(day) {
+            console.log(day)
+            if(!this.isSameDay(day)){
+                return false;
+            }
+            if(day == "Saturday"){
+                if(this.date.getHours() >= 8 && this.date.getHours() <= 12){
+                    return true;
+                }
+            }
+            else if(day == "Tuesday") {
+                if( ((this.date.getHours() == 12 && this.date.getMinutes() >= 30) || this.date.getHours() >= 13) && this.date.getHours() <= 18){
+                    return true;
+                }
+            }
+            else if(day == "Thursday"){
+                if( ((this.date.getHours() == 12 && this.date.getMinutes() >= 30) || this.date.getHours() >= 13) && this.date.getHours() <= 18){
+                    return true;
+                }
+            }
+            return false;
+        },
+        dayNumToString: function(num) {
+            for(let i = 0; i < Object.keys(about.Open.time).length; i++){
+                if(num == i){
+                    return Object.keys(about.Open.time)[i];
+                }
+            }
+        }
     }
 })

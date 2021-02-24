@@ -11,15 +11,31 @@ const NAV_HEAD_SIZE = 500;
 
 let template = "";
 
-var navbar = new Vue({
-    el: '#navbar',
-    data: {
+Vue.component('Navbar', {
+    template: `<nav id="navbar" class="bg-dark" v-bind:class="phoneClass">
+            <a class="navlogo">{{logoName}}</a>
+            <div class="link-container" v-bind:class="toggleShowPhoneNav">
+                <div class="phoneNavbar" v-bind:class="{none: !isPhone}">
+                    <a class="navlogo">{{logoName}}</a>
+                    <div v-on:click="hideLinks" class="x">X</div>
+                </div>
+                <div class="links">
+                    <ol>
+                        <li v-for="(link, name) in links"><a v-bind:href="link">{{name}}</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div v-on:click="showLinks" class="hamburger">
+                <div v-for="i in 3"></div>
+            </div>
+        </nav>`,
+    data() {return {
         links,
         isPhone: (window.innerWidth <= PHONE_SIZE),
         showPhoneLinks: false,
         loaded: false,
         logoName: (window.innerWidth <= NAV_HEAD_SIZE) ? "BAPL" : "Bridge Academy Public Library"
-    },
+    }},
     created() {
         window.addEventListener("resize", this.updateNav);
     },
@@ -57,5 +73,8 @@ var navbar = new Vue({
             return classCss;
         }
     }
+})
 
+var navbar = new Vue({
+    el: '#navbar'
 })

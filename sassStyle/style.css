@@ -180,32 +180,33 @@ body {
   justify-content: space-around;
   margin: 32px 0;
 }
-.itemsContainer .itemContainer {
+
+.itemContainer {
   margin: 16px;
   width: 280px;
 }
 @media screen and (max-width: 640px) {
-  .itemsContainer .itemContainer {
+  .itemContainer {
     width: 100%;
   }
 }
 @media screen and (max-width: 961px) and (min-width: 640px) {
-  .itemsContainer .itemContainer {
+  .itemContainer {
     width: 280px;
   }
 }
 @media screen and (min-width: 961px) {
-  .itemsContainer .itemContainer {
+  .itemContainer {
     width: 400px;
   }
 }
-.itemsContainer .itemContainer .itemTitle {
+.itemContainer .itemTitle {
   background-color: #C4A287;
   padding: 8px 0 8px 8px;
   font-weight: 700;
   font-size: 24;
 }
-.itemsContainer .itemContainer .itemInfo {
+.itemContainer .itemInfo {
   background-color: whitesmoke;
   padding: 12px 16px 12px 12px;
   border-bottom: solid lightgray 1px;
@@ -213,15 +214,15 @@ body {
   border-left: solid lightgray 1px;
   overflow: hidden;
 }
-.itemsContainer .itemContainer .itemInfo .infoTitle {
+.itemContainer .itemInfo .infoTitle {
   margin: 0 0 4px 0;
   font-size: 18;
 }
-.itemsContainer .itemContainer .itemInfo .infoInfo {
+.itemContainer .itemInfo .infoInfo {
   margin: 0;
   font-size: 14;
 }
-.itemsContainer .itemContainer .itemInfo .infoLink {
+.itemContainer .itemInfo .infoLink {
   margin: 0;
   font-size: 12;
   float: right;
@@ -229,17 +230,26 @@ body {
   color: #545454;
   text-decoration: none;
 }
-.itemsContainer .itemContainer .itemInfo .infoLink:hover {
+.itemContainer .itemInfo .infoLink:hover {
   text-decoration: underline;
 }
-.itemsContainer .itemContainer .itemLink {
+.itemContainer .itemLink {
   float: right;
   margin-top: 4px;
   color: #545454;
   text-decoration: none;
 }
-.itemsContainer .itemContainer .itemLink:hover {
+.itemContainer .itemLink:hover {
   text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+  font-size: 18;
+}
+
+.greenbc {
+  background-color: #99ff99;
 }
 
 /*# sourceMappingURL=style.css.map */
