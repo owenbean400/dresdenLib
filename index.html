@@ -1,19 +1,25 @@
 <html>
     <head>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-        <link rel="stylesheet" href="sassStyle/style.css"/>
+        <link rel="stylesheet" href="sassStyle/navbar.css"/>
+        <link rel="stylesheet" href="sassStyle/main.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        <!-- Navbar -->
         <div id="navbar">
             <Navbar></Navbar>
         </div>
         <script src="navbar.js"></script>
+
+        <!-- Header -->
         <div class="headerImage">
 
         </div>
         <h1 style="text-align: center;">Welcome to Bridge Academy Public Library</h1>
         <h3 style="text-align: center;">currently in development</h3>
+
+        <!-- Info 1 -->
         <div id="mainInfo" class="itemsContainer">
             <div v-for="(item, name) in items" class="itemContainer">
                 <div class="itemTitle" class="itemTitle">{{name}}</div>
@@ -25,6 +31,8 @@
                 <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
             </div>
         </div>
+
+        <!-- Info 2 -->
         <div id="about" class="itemsContainer">
             <div v-for="(item, name) in about" class="aboutContainers">
                 <div v-if="name == 'History'">
@@ -60,6 +68,7 @@
             </div>
         </div>
         <script src="main.js"></script>
+        <!-- random content on bottom -->
         <p class="contentRandy">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium malesuada lorem non consequat. Curabitur auctor
         maximus mi, vitae tristique lacus ornare non. Etiam eleifend rutrum ante sit amet congue. In euismod, massa vitae mattis
         sollicitudin, risus augue dictum nunc, elementum varius est purus ac mauris. Etiam vehicula vehicula blandit.

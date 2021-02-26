@@ -1,0 +1,123 @@
+@import './index.sass'
+$itemBorder: solid lightgray 1px
+$itemBackground: whitesmoke
+
+.none
+    display: none
+
+body
+    padding: 0
+    margin: 0
+
+.headerImage
+    margin-top: 64px
+    height: 300px
+    width: 100%
+    background-image: url("../librarySketch.gif")
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center top
+
+.contentRandy
+    padding: 8 16px
+
+.itemsContainer
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    margin: 32px 0
+
+.itemContainer
+    margin: 16px
+    width: 280px
+    @media screen and ( max-width: 640px )
+        width: 100%
+    @media screen and ( min-width: 640px )
+        width: calc(50% - 32px)
+
+.aboutContainers
+    margin: 16px
+    width: 280px
+    &:nth-child(n + 1)
+        @media screen and ( max-width: 780px )
+            width: 100%
+        @media screen and ( min-width: 780px ) and ( max-width: 960px )
+            width: calc(50% - 32px)
+        @media screen and ( min-width: 960px )
+            width: calc(33.33% - 32px)
+    &:first-child
+        @media screen and ( max-width: 960px )
+            width: 100%
+        @media screen and ( min-width: 960px )
+            width: calc(33.33% - 32px)
+
+.itemTitle
+    background-color: nth($colors, 2)
+    padding: 8px 0 8px 8px
+    font-weight: 700
+    font-size: nth($fontSizes, 4)
+
+.itemInfo
+    background-color: $itemBackground
+    padding: 12px 16px 12px 12px
+    border-bottom: $itemBorder
+    border-right: $itemBorder
+    border-left: $itemBorder
+    overflow: hidden
+    list-style-type: none
+    margin: 0
+
+    li
+        padding: 6px 0
+
+    .infoTitle
+        margin: 0 0 4px 0
+        font-size: nth($fontSizes, 3)
+
+    .infoInfo
+        margin: 0
+        font-size: nth($fontSizes, 2)
+
+    .infoLink
+        margin: 0
+        font-size: nth($fontSizes, 1)
+        float: right
+        display: block
+        color: nth($colors, 6)
+        text-decoration: none
+        &:hover
+            text-decoration: underline
+
+.itemLink
+    float: right
+    margin-top: 4px
+    color: nth($colors, 6)
+    text-decoration: none
+    cursor: pointer
+    &:hover
+        text-decoration: underline
+
+.openTable
+    padding: 8px
+    background-color: $itemBackground
+    border-bottom: $itemBorder
+    border-right: $itemBorder
+    border-left: $itemBorder
+
+    div
+        margin: 12px 0
+        font-size: nth($fontSizes, 3)
+        font-weight: bold
+
+    table
+        border-collapse: collapse
+        width: 100%
+        padding: 8px
+        font-size: nth($fontSizes, 2)
+
+        tr
+            &:nth-child(2n)
+                background-color: nth($colors, 4)
+            td
+                padding: 6px 4px
+                border: $itemBorder

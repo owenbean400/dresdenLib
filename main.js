@@ -1,3 +1,4 @@
+//about context information for main web page
 let items = {
     Newsletter: {
         stuff: [
@@ -41,6 +42,7 @@ let items = {
     }
 }
 
+//about information for main page
 let about = {
     History: {
         history: "At one time there were 10 school districts [in Dresden,] each with its own one-room building. Students, especially the boys, attended when they were not needed on the farm. It was not until the latter part of the 1800's that some type of higher education was available. By 1890 Bridge Academy was established, by private endowment, providing the type of education that enabled young adults to go out into the world in other than the labor field..."
@@ -72,10 +74,11 @@ var aboutInfo = new Vue({
     el: "#about",
     data: {
         about,
-        date: new Date(),
-        colors: ["#66ff66", "eed"],
+        date: new Date(), //today's date
+        colors: ["#66ff66", "eed"], //color of background when the day is today or opened
     },
     methods: {
+        //calculate if day of about hours JSON object equals today
         isSameDay: function(day) {
             for(let i = 0; i < Object.keys(about.Hours.time).length; i++){
                 if(day == Object.keys(about.Hours.time)[i]){
@@ -86,6 +89,7 @@ var aboutInfo = new Vue({
             }
             return false;
         },
+        //checks if the time now is opened
         isOpen: function(day) {
             if(!this.isSameDay(day)){
                 return false;
@@ -102,6 +106,7 @@ var aboutInfo = new Vue({
             }
             return false;
         },
+        //change the date class day number to the object string
         dayNumToString: function(num) {
             for(let i = 0; i < Object.keys(about.Hours.time).length; i++){
                 if(num == i){
