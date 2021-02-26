@@ -169,7 +169,7 @@ body
 .itemsContainer
     display: flex
     flex-wrap: wrap
-    justify-content: space-around
+    justify-content: space-between
     margin: 32px 0
 
 .itemContainer
@@ -177,54 +177,91 @@ body
     width: 280px
     @media screen and ( max-width: 640px )
         width: 100%
-    @media screen and ( max-width: 961px ) and ( min-width: 640px )
-        width: 280px
-    @media screen and ( min-width: 961px )
-        width: 400px
+    @media screen and ( min-width: 640px )
+        width: calc(50% - 32px)
 
-    .itemTitle
-        background-color: nth($colors, 2)
-        padding: 8px 0 8px 8px
-        font-weight: 700
-        font-size: nth($fontSizes, 4)
+.aboutContainers
+    margin: 16px
+    width: 280px
+    &:nth-child(n + 1)
+        @media screen and ( max-width: 780px )
+            width: 100%
+        @media screen and ( min-width: 780px ) and ( max-width: 960px )
+            width: calc(50% - 32px)
+        @media screen and ( min-width: 960px )
+            width: calc(33.33% - 32px)
+    &:first-child
+        @media screen and ( max-width: 960px )
+            width: 100%
+        @media screen and ( min-width: 960px )
+            width: calc(33.33% - 32px)
 
-    .itemInfo
-        background-color: whitesmoke
-        padding: 12px 16px 12px 12px
-        border-bottom: solid lightgray 1px
-        border-right: solid lightgray 1px
-        border-left: solid lightgray 1px
-        overflow: hidden
+.itemTitle
+    background-color: nth($colors, 2)
+    padding: 8px 0 8px 8px
+    font-weight: 700
+    font-size: nth($fontSizes, 4)
 
-        .infoTitle
-            margin: 0 0 4px 0
-            font-size: nth($fontSizes, 3)
+.itemInfo
+    background-color: whitesmoke
+    padding: 12px 16px 12px 12px
+    border-bottom: solid lightgray 1px
+    border-right: solid lightgray 1px
+    border-left: solid lightgray 1px
+    overflow: hidden
+    list-style-type: none
+    margin: 0
 
-        .infoInfo
-            margin: 0
-            font-size: nth($fontSizes, 2)
+    li
+        padding: 6px 0
 
-        .infoLink
-            margin: 0
-            font-size: nth($fontSizes, 1)
-            float: right
-            display: block
-            color: nth($colors, 6)
-            text-decoration: none
-            &:hover
-                text-decoration: underline
+    .infoTitle
+        margin: 0 0 4px 0
+        font-size: nth($fontSizes, 3)
 
-    .itemLink
+    .infoInfo
+        margin: 0
+        font-size: nth($fontSizes, 2)
+
+    .infoLink
+        margin: 0
+        font-size: nth($fontSizes, 1)
         float: right
-        margin-top: 4px
+        display: block
         color: nth($colors, 6)
         text-decoration: none
         &:hover
             text-decoration: underline
 
-.bold
-    font-weight: bold
-    font-size: nth($fontSizes, 3)
+.itemLink
+    float: right
+    margin-top: 4px
+    color: nth($colors, 6)
+    text-decoration: none
+    &:hover
+        text-decoration: underline
 
-.greenbc
-    background-color: #99ff99
+.openTable
+    padding: 8px
+    background-color: whitesmoke
+    border-bottom: solid lightgray 1px
+    border-right: solid lightgray 1px
+    border-left: solid lightgray 1px
+
+    div
+        margin: 12px 0
+        font-size: nth($fontSizes, 3)
+        font-weight: bold
+
+    table
+        border-collapse: collapse
+        width: 100%
+        padding: 8px
+        font-size: nth($fontSizes, 2)
+
+        tr
+            &:nth-child(2n)
+                background-color: white
+            td
+                padding: 6px 4px
+                border: lightgray 1px solid

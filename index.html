@@ -25,16 +25,38 @@
                 <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
             </div>
         </div>
-        <div id="about">
-            <div v-for="(item, name) in about" class="itemContainer">
-                <div class="itemTitle">{{name}}</div>
-                <div v-if="isOpen(dayNumToString(date.getDay()))">We're Open Now</div>
-                <table width="100%" style="border-collapse:collapse;">
-                    <tr v-for="(time, day) in item.time"  v-bind:class="{bold : isSameDay(day), greenbc : isOpen(day)}">
-                        <td>{{day}}</td>
-                        <td>{{time}}</td>
-                    </tr>
-                </table>
+        <div id="about" class="itemsContainer">
+            <div v-for="(item, name) in about" class="aboutContainers">
+                <div v-if="name == 'History'">
+                    <div class="itemTitle" class="itemTitle">{{name}}</div>
+                    <div class="itemInfo">
+                        <p class="infoInfo">{{item.history}}</p>
+                    </div>
+                    <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
+                </div>
+                <div v-else-if="name == 'Hours'">
+                    <div class="itemTitle">{{name}}</div>
+                    <div class="openTable">
+                        <div v-if="isOpen(dayNumToString(date.getDay()))">We're Currently Open</div>
+                        <div v-else>Sorry, We're Closed</div>
+                        <table width="100%">
+                            <tr v-for="(time, day) in item.time" v-bind:style="[isSameDay(day) ? isOpen(day) ? 
+                                {'background-color': colors[0], 'font-weight': 600, 'font-size': '16px'} :
+                                {'font-size': '16px', 'font-weight': 600} :
+                                {'font-weight': 400}]">
+                                <td>{{day}}</td>
+                                <td>{{time}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div v-else> 
+                    <div class="itemTitle" class="itemTitle">{{name}}</div>
+                    <ul class="itemInfo">
+                        <li v-for="activity in item.activites">{{activity}}</li>
+                    </ul>
+                    <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
+                </div>
             </div>
         </div>
         <script src="main.js"></script>

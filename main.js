@@ -42,7 +42,10 @@ let items = {
 }
 
 let about = {
-    Open: {
+    History: {
+        history: "At one time there were 10 school districts [in Dresden,] each with its own one-room building. Students, especially the boys, attended when they were not needed on the farm. It was not until the latter part of the 1800's that some type of higher education was available. By 1890 Bridge Academy was established, by private endowment, providing the type of education that enabled young adults to go out into the world in other than the labor field..."
+    },
+    Hours: {
         time: {
             Sunday: "Closed",
             Monday: "Closed",
@@ -52,6 +55,9 @@ let about = {
             Friday: "Closed",
             Saturday: "9:00am - 12:00pm"
         }
+    },
+    Activity: {
+        activites: ["basketball", "pickelball", "reading", "using computers", "borrow a book"],
     }
 }
 
@@ -66,12 +72,13 @@ var aboutInfo = new Vue({
     el: "#about",
     data: {
         about,
-        date: new Date()
+        date: new Date(),
+        colors: ["#66ff66", "eed"],
     },
     methods: {
         isSameDay: function(day) {
-            for(let i = 0; i < Object.keys(about.Open.time).length; i++){
-                if(day == Object.keys(about.Open.time)[i]){
+            for(let i = 0; i < Object.keys(about.Hours.time).length; i++){
+                if(day == Object.keys(about.Hours.time)[i]){
                     if(this.date.getDay() == i){
                         return true;
                     }
@@ -80,7 +87,6 @@ var aboutInfo = new Vue({
             return false;
         },
         isOpen: function(day) {
-            console.log(day)
             if(!this.isSameDay(day)){
                 return false;
             }
@@ -89,12 +95,7 @@ var aboutInfo = new Vue({
                     return true;
                 }
             }
-            else if(day == "Tuesday") {
-                if( ((this.date.getHours() == 12 && this.date.getMinutes() >= 30) || this.date.getHours() >= 13) && this.date.getHours() <= 18){
-                    return true;
-                }
-            }
-            else if(day == "Thursday"){
+            else if(day == "Tuesday" || day == "Thursday") {
                 if( ((this.date.getHours() == 12 && this.date.getMinutes() >= 30) || this.date.getHours() >= 13) && this.date.getHours() <= 18){
                     return true;
                 }
@@ -102,9 +103,9 @@ var aboutInfo = new Vue({
             return false;
         },
         dayNumToString: function(num) {
-            for(let i = 0; i < Object.keys(about.Open.time).length; i++){
+            for(let i = 0; i < Object.keys(about.Hours.time).length; i++){
                 if(num == i){
-                    return Object.keys(about.Open.time)[i];
+                    return Object.keys(about.Hours.time)[i];
                 }
             }
         }
