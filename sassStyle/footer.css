@@ -36,7 +36,7 @@ footer .footer-info {
 }
 @media screen and (max-width: 960px) and (min-width: 768px) {
   footer .footer-info {
-    grid-template-columns: auto 300px;
+    grid-template-columns: auto 280px;
   }
 }
 @media screen and (min-width: 960px) {
@@ -57,7 +57,7 @@ footer .footer-info address a:hover {
   text-decoration: underline;
 }
 footer .footer-info table {
-  width: 300px;
+  width: 280px;
   border-collapse: collapse;
   color: #C4A287;
 }
