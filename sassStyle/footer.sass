@@ -1,0 +1,61 @@
+@import './index.sass'
+
+footer
+    padding: 32px
+    background-color: nth($colors, 1)
+
+    .f-grid
+        display: grid
+        @media screen and ( max-width: nth($sizes, 2) )
+            grid-template-columns: auto
+        @media screen and ( min-width: nth($sizes, 2) )
+            grid-template-columns: auto auto
+
+    .footer-info
+        $tableSize: 300px
+        display: grid
+        grid-gap: 32px
+        @media screen and ( max-width: nth($sizes, 1) )
+            grid-template-rows: auto auto
+        @media screen and ( max-width:  nth($sizes, 2)) and ( min-width: nth($sizes, 1) )
+            grid-template-columns: auto $tableSize
+        @media screen and ( min-width: nth($sizes, 2) )
+            grid-template-rows: auto auto
+
+        address
+            color: nth($colors, 2)
+            font-style: normal
+
+            a
+                color: nth($colors, 3)
+                text-decoration: none
+                cursor: pointer
+                &:hover
+                    text-decoration: underline
+
+        table
+            width: $tableSize
+            border-collapse: collapse
+            color: nth($colors, 2)
+
+            td
+                border: nth($colors, 5) 1px solid
+                padding: 4px
+                color: nth($colors, 2)
+
+    ol
+        list-style-type: none
+        margin: 0
+        display: flex
+        flex-wrap: wrap
+
+        li
+            width: 150px
+            height: 48px
+
+            a
+                color: nth($colors, 2)
+                text-decoration: none
+                cursor: pointer
+                &:hover
+                    text-decoration: underline

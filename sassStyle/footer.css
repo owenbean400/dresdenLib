@@ -1,0 +1,88 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+
+.none {
+  display: none;
+}
+
+footer {
+  padding: 32px;
+  background-color: #341C1C;
+}
+footer .f-grid {
+  display: grid;
+}
+@media screen and (max-width: 960px) {
+  footer .f-grid {
+    grid-template-columns: auto;
+  }
+}
+@media screen and (min-width: 960px) {
+  footer .f-grid {
+    grid-template-columns: auto auto;
+  }
+}
+footer .footer-info {
+  display: grid;
+  grid-gap: 32px;
+}
+@media screen and (max-width: 768px) {
+  footer .footer-info {
+    grid-template-rows: auto auto;
+  }
+}
+@media screen and (max-width: 960px) and (min-width: 768px) {
+  footer .footer-info {
+    grid-template-columns: auto 300px;
+  }
+}
+@media screen and (min-width: 960px) {
+  footer .footer-info {
+    grid-template-rows: auto auto;
+  }
+}
+footer .footer-info address {
+  color: #C4A287;
+  font-style: normal;
+}
+footer .footer-info address a {
+  color: #B07156;
+  text-decoration: none;
+  cursor: pointer;
+}
+footer .footer-info address a:hover {
+  text-decoration: underline;
+}
+footer .footer-info table {
+  width: 300px;
+  border-collapse: collapse;
+  color: #C4A287;
+}
+footer .footer-info table td {
+  border: black 1px solid;
+  padding: 4px;
+  color: #C4A287;
+}
+footer ol {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+footer ol li {
+  width: 150px;
+  height: 48px;
+}
+footer ol li a {
+  color: #C4A287;
+  text-decoration: none;
+  cursor: pointer;
+}
+footer ol li a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=footer.css.map */
