@@ -1,34 +1,35 @@
 let footerLinks = {
-    info: {
-        contact: {
-            email: "BALibrarian@Bridge-Academy.lib.me.us",
-            address: {
-                street: "44 Middle Rd, Dresden, ME 04342",
-                url: "https://google.com/maps/dir//dresden+library/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x4cadf37bdae60865:0x42de305e75709fc6?sa=X",
-            },
-            phone: 12077378810,
-        },
-        hours: {
-            Sunday: "Closed",
-            Monday: "Closed",
-            Tuesday: "1:30pm - 7:00pm",
-            Wednesday: "Closed",
-            Thursday: "1:30pm - 7:00pm",
-            Friday: "Closed",
-            Saturday: "9:00am - 12:00pm"
-        }
+  info: {
+    contact: {
+      email: "BALibrarian@Bridge-Academy.lib.me.us",
+      address: {
+        street: "44 Middle Rd, Dresden, ME 04342",
+        url:
+          "https://google.com/maps/dir//dresden+library/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x4cadf37bdae60865:0x42de305e75709fc6?sa=X",
+      },
+      phone: 12077378810,
     },
-    links: {
-        "About": "/about/about.html",
-        "Newsletter": "/newsletter/newsletter.html",
-        "Events": "/events/event.html",
-        "FAQ": "faq.html",
-        "Catalog": "catalog.html",
+    hours: {
+      Sunday: "Closed",
+      Monday: "Closed",
+      Tuesday: "1:30pm - 7:00pm",
+      Wednesday: "Closed",
+      Thursday: "1:30pm - 7:00pm",
+      Friday: "Closed",
+      Saturday: "9:00am - 12:00pm",
     },
-}
+  },
+  links: {
+    About: "/about/about.html",
+    Newsletter: "/newsletter/newsletter.html",
+    Events: "/events/event.html",
+    FAQ: "faq.html",
+    Catalog: "catalog.html",
+  },
+};
 
-Vue.component('Foot' ,{
-    template: `
+Vue.component("Foot", {
+  template: `
         <footer id="footer">
             <div class="f-grid">
                 <div class="footer-info">
@@ -54,32 +55,35 @@ Vue.component('Foot' ,{
                         <li v-for="(link, name) in data.links"><a :href="link">{{name}}</a></li>
                     </ol>
                 </div>
+                <p class="copyright">Copyright {{date.getFullYear()}} Bridge Academy Public Library</p>
             </div>
         </footer>`,
-    methods: {
-        phoneNumberDisplay: function(phone) {
-            phone = phone.toString();
-            let phoneString = "";
-            for (let i = 0; i < phone.length; i++) {
-                switch(i) {
-                    case 1:
-                        phoneString += "("
-                        break;
-                    case 4:
-                        phoneString += ") "
-                        break;
-                    case 7:
-                        phoneString += "-"
-                        break;
-                }
-                phoneString += phone.charAt(i);
-            }
-            return phoneString;
+  methods: {
+    phoneNumberDisplay: function (phone) {
+      phone = phone.toString();
+      let phoneString = "";
+      for (let i = 0; i < phone.length; i++) {
+        switch (i) {
+          case 1:
+            phoneString += "(";
+            break;
+          case 4:
+            phoneString += ") ";
+            break;
+          case 7:
+            phoneString += "-";
+            break;
         }
+        phoneString += phone.charAt(i);
+      }
+      return phoneString;
     },
-    data() {return {data: footerLinks}},
-})
+  },
+  data() {
+    return { data: footerLinks, date: new Date() };
+  },
+});
 
 var footer = new Vue({
-    el: '#footer',
-})
+  el: "#footer",
+});

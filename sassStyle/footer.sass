@@ -1,30 +1,35 @@
 @import './index.sass'
 
 footer
-    padding: 32px
+    $footerPadding: 16px
+    padding: $footerPadding
+    width: calc(100% - #{$footerPadding * 2})
     background-color: nth($colors, 1)
 
     .f-grid
         display: grid
-        @media screen and ( max-width: nth($sizes, 2) )
+        max-width: 1200px
+        margin: 0 auto
+        @media screen and ( max-width: nth($sizes, 1) )
             grid-template-columns: auto
-        @media screen and ( min-width: nth($sizes, 2) )
+        @media screen and ( min-width: nth($sizes, 1) )
             grid-template-columns: auto auto
 
     .footer-info
-        $tableSize: 280px
         display: grid
+        width: calc(100% - 32px)
         grid-gap: 32px
+        @media screen and ( max-width: nth($sizes, 3) )
+            grid-template-rows: auto auto
         @media screen and ( max-width: nth($sizes, 1) )
-            grid-template-rows: auto auto
-        @media screen and ( max-width:  nth($sizes, 2)) and ( min-width: nth($sizes, 1) )
-            grid-template-columns: auto $tableSize
-        @media screen and ( min-width: nth($sizes, 2) )
-            grid-template-rows: auto auto
+            justify-content: center
+        @media screen and ( min-width: nth($sizes, 3) )
+            grid-template-columns: auto
 
         address
             color: nth($colors, 2)
             font-style: normal
+            max-width: 300px
 
             a
                 color: nth($colors, 3)
@@ -34,7 +39,7 @@ footer
                     text-decoration: underline
 
         table
-            width: $tableSize
+            max-width: 260px
             border-collapse: collapse
             color: nth($colors, 2)
 
@@ -44,14 +49,29 @@ footer
                 color: nth($colors, 2)
 
     ol
+        $gridSizeLinks: (nth($sizes, 1), 600px, 400px)
+        $linkWidth: 160px
         list-style-type: none
-        margin: 0
-        display: flex
-        flex-wrap: wrap
+        justify-content: start
+        @mixin phoneSizeLinks($count)
+            display: grid
+            margin: ($footerPadding * 2) auto
+            width: $count * $linkWidth
+            grid-template-columns: repeat($count, $linkWidth)
+        @media screen and ( min-width: nth($gridSizeLinks, 1) )
+            margin: 0
+            display: flex
+            flex-wrap: wrap
+        @media screen and ( max-width: nth($gridSizeLinks, 1) ) and ( min-width: nth($gridSizeLinks, 2) )
+            @include phoneSizeLinks(3)
+        @media screen and ( max-width: nth($gridSizeLinks, 2) ) and ( min-width: nth($gridSizeLinks, 3) )
+            @include phoneSizeLinks(2)
+        @media screen and ( max-width: nth($gridSizeLinks, 3) )
+            @include phoneSizeLinks(1)
 
         li
-            width: 150px
-            height: 48px
+            width: $linkWidth
+            height: 40px
 
             a
                 color: nth($colors, 2)
@@ -59,3 +79,8 @@ footer
                 cursor: pointer
                 &:hover
                     text-decoration: underline
+
+    .copyright
+        color: nth($colors, 2)
+        @media screen and ( max-width: nth($sizes, 1) )
+            text-align: center

@@ -9,44 +9,49 @@ body {
 }
 
 footer {
-  padding: 32px;
+  padding: 16px;
+  width: calc(100% - 32px);
   background-color: #341C1C;
 }
 footer .f-grid {
   display: grid;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 768px) {
   footer .f-grid {
     grid-template-columns: auto;
   }
 }
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 768px) {
   footer .f-grid {
     grid-template-columns: auto auto;
   }
 }
 footer .footer-info {
   display: grid;
+  width: calc(100% - 32px);
   grid-gap: 32px;
+}
+@media screen and (max-width: 1200px) {
+  footer .footer-info {
+    grid-template-rows: auto auto;
+  }
 }
 @media screen and (max-width: 768px) {
   footer .footer-info {
-    grid-template-rows: auto auto;
+    justify-content: center;
   }
 }
-@media screen and (max-width: 960px) and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   footer .footer-info {
-    grid-template-columns: auto 280px;
-  }
-}
-@media screen and (min-width: 960px) {
-  footer .footer-info {
-    grid-template-rows: auto auto;
+    grid-template-columns: auto;
   }
 }
 footer .footer-info address {
   color: #C4A287;
   font-style: normal;
+  max-width: 300px;
 }
 footer .footer-info address a {
   color: #B07156;
@@ -57,7 +62,7 @@ footer .footer-info address a:hover {
   text-decoration: underline;
 }
 footer .footer-info table {
-  width: 280px;
+  max-width: 260px;
   border-collapse: collapse;
   color: #C4A287;
 }
@@ -68,13 +73,42 @@ footer .footer-info table td {
 }
 footer ol {
   list-style-type: none;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
+  justify-content: start;
+}
+@media screen and (min-width: 768px) {
+  footer ol {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 768px) and (min-width: 600px) {
+  footer ol {
+    display: grid;
+    margin: 32px auto;
+    width: 480px;
+    grid-template-columns: repeat(3, 160px);
+  }
+}
+@media screen and (max-width: 600px) and (min-width: 400px) {
+  footer ol {
+    display: grid;
+    margin: 32px auto;
+    width: 320px;
+    grid-template-columns: repeat(2, 160px);
+  }
+}
+@media screen and (max-width: 400px) {
+  footer ol {
+    display: grid;
+    margin: 32px auto;
+    width: 160px;
+    grid-template-columns: repeat(1, 160px);
+  }
 }
 footer ol li {
-  width: 150px;
-  height: 48px;
+  width: 160px;
+  height: 40px;
 }
 footer ol li a {
   color: #C4A287;
@@ -83,6 +117,14 @@ footer ol li a {
 }
 footer ol li a:hover {
   text-decoration: underline;
+}
+footer .copyright {
+  color: #C4A287;
+}
+@media screen and (max-width: 768px) {
+  footer .copyright {
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=footer.css.map */
