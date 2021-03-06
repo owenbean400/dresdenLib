@@ -22,7 +22,7 @@ let footerLinks = {
   links: {
     About: "/about/about.html",
     Newsletter: "/newsletter/newsletter.html",
-    Events: "events.html",
+    Events: "./events.html",
     FAQ: "faq.html",
     Catalog: "catalog.html",
   },
