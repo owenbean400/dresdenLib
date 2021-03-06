@@ -1,20 +1,20 @@
 //JSON object of links name with html file location
 let links = {
-    "About": "/about/about.html",
-    "Newsletter": "/newsletter/newsletter.html",
-    "Events": "/events/event.html",
-    "FAQ": "faq.html",
-    "Catalog": "catalog.html",
-}
+  About: "/about/about.html",
+  Newsletter: "/newsletter/newsletter.html",
+  Events: "/events.html",
+  FAQ: "faq.html",
+  Catalog: "catalog.html",
+};
 
 //variable constants
 const PHONE_SIZE = 760;
 const NAV_HEAD_SIZE = 500; //size change text BABL to full out word
 
 //navbar component vue
-Vue.component('Navbar', {
-    template: `<nav id="navbar" class="bg-dark" v-bind:class="phoneClass">
-            <a class="navlogo">{{logoName}}</a>
+Vue.component("Navbar", {
+  template: `<nav id="navbar" class="bg-dark" v-bind:class="phoneClass">
+            <a class="navlogo" href="index.html">{{logoName}}</a>
             <div class="link-container" v-bind:class="toggleShowPhoneNav">
                 <div class="phoneNavbar" v-bind:class="{none: !isPhone}">
                     <a class="navlogo">{{logoName}}</a>
@@ -30,59 +30,65 @@ Vue.component('Navbar', {
                 <div v-for="i in 3"></div>
             </div>
         </nav>`,
-    data() {return {
-        links,
-        isPhone: (window.innerWidth <= PHONE_SIZE),
-        showPhoneLinks: false,
-        loaded: false,
-        logoName: (window.innerWidth <= NAV_HEAD_SIZE) ? 
-            "BAPL" : "Bridge Academy Public Library" //switch text header based on phone size
-    }},
-    created() {
-        window.addEventListener("resize", this.updateNav); 
+  data() {
+    return {
+      links,
+      isPhone: window.innerWidth <= PHONE_SIZE,
+      showPhoneLinks: false,
+      loaded: false,
+      logoName:
+        window.innerWidth <= NAV_HEAD_SIZE
+          ? "BAPL"
+          : "Bridge Academy Public Library", //switch text header based on phone size
+    };
+  },
+  created() {
+    window.addEventListener("resize", this.updateNav);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.updateNav);
+  },
+  methods: {
+    //updates variables based on size width
+    updateNav(event) {
+      this.isPhone = window.innerWidth <= PHONE_SIZE;
+      this.showPhoneLinks =
+        window.innerWidth <= PHONE_SIZE ? this.showPhoneLinks : false;
+      this.logoName =
+        window.innerWidth <= NAV_HEAD_SIZE
+          ? "BAPL"
+          : "Bridge Academy Public Library";
     },
-    destroyed() {
-        window.removeEventListener("resize", this.updateNav);
+    //show the links if phone
+    showLinks() {
+      console.log("open");
+      (this.loaded = true), (this.showPhoneLinks = true);
     },
-    methods: {
-        //updates variables based on size width
-        updateNav(event) {
-            this.isPhone = (window.innerWidth <= PHONE_SIZE);
-            this.showPhoneLinks = (window.innerWidth <= PHONE_SIZE) ? this.showPhoneLinks : false;
-            this.logoName = (window.innerWidth <= NAV_HEAD_SIZE) ? "BAPL" : "Bridge Academy Public Library"
-        },
-        //show the links if phone
-        showLinks() {
-            console.log("open");
-            this.loaded = true,
-            this.showPhoneLinks = true;
-        },
-        //hide the links if phone
-        hideLinks() {
-            console.log("close");
-            this.showPhoneLinks = false;
-        }
+    //hide the links if phone
+    hideLinks() {
+      console.log("close");
+      this.showPhoneLinks = false;
     },
-    computed: {
-        //switch between classes based on boolean (might put inside Vue HTML template later)
-        phoneClass: function() {
-            return this.isPhone ? 'navPhone' : 'navDesk';
-        },
-        //switch the class depending on if links should show, hide, or not display based on size width
-        toggleShowPhoneNav: function() {
-            let classCss;
-            if(!this.loaded && window.innerWidth <= PHONE_SIZE){
-                classCss = 'none'
-            }
-            else{
-                classCss = this.showPhoneLinks ? 'showPhoneLink' : 'hidePhoneLink'
-            }
-            return classCss;
-        }
-    }
-})
+  },
+  computed: {
+    //switch between classes based on boolean (might put inside Vue HTML template later)
+    phoneClass: function () {
+      return this.isPhone ? "navPhone" : "navDesk";
+    },
+    //switch the class depending on if links should show, hide, or not display based on size width
+    toggleShowPhoneNav: function () {
+      let classCss;
+      if (!this.loaded && window.innerWidth <= PHONE_SIZE) {
+        classCss = "none";
+      } else {
+        classCss = this.showPhoneLinks ? "showPhoneLink" : "hidePhoneLink";
+      }
+      return classCss;
+    },
+  },
+});
 
 //navbar vue
 var navbar = new Vue({
-    el: '#navbar'
-})
+  el: "#navbar",
+});

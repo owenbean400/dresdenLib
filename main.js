@@ -41,7 +41,7 @@ let items = {
         link: "./events/yardsale.html",
       },
     ],
-    link: "./events/events.html",
+    link: "./events.html",
   },
 };
 

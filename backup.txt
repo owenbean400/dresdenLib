@@ -1,0 +1,43 @@
+events = {
+  title: {
+    about: "Hey I just met you",
+    date: "12/10/20",
+    link: "hey.html",
+  },
+  title2: {
+    about: "dwahdwkahdiwa",
+    date: "12/10/20",
+    link: "hey.html",
+  },
+  title3: {
+    about: "dwahdwkahdiwa",
+    date: "12/10/20",
+    link: "hey.html",
+  },
+  title4: {
+    about: "dwahdwkahdiwa",
+    date: "12/10/20",
+    link: "hey.html",
+  },
+};
+//EJECTION_AWAY
+
+Vue.component("Events", {
+  template: `
+        <div class="events-container">
+            <div v-for="(info, title) in events" class="event-card">
+                <h4 class="title">{{title}}</h4>
+                <p class="date">{{info.date}}</p>
+                <p class="about">{{info.about}}</p>
+                <a :href="info.link">View More {{title}}</a>
+            </div>
+        </div>
+    `,
+  data() {
+    return { events: events };
+  },
+});
+
+var events = new Vue({
+  el: "#events",
+});
