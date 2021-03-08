@@ -83,6 +83,7 @@ Vue.component("Navbar", {
       stringCD = "/";
       filePath = filePath.substring(1, filePath.length);
       if (realPath.search("github") !== -1) {
+        console.log("ON GITHUB");
         filePath = filePath.substring(1, filePath.length);
       }
       while (filePath.search("/") !== -1) {
