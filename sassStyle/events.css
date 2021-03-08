@@ -16,6 +16,7 @@ h1 {
 .events-container {
   display: flex;
   flex-wrap: wrap;
+  margin: 8px 0 32px 0;
 }
 @media screen and (min-width: 744px) {
   .events-container {
@@ -32,6 +33,10 @@ h1 {
   background-color: #C4A287;
   margin: 16px;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 16px auto 16px;
+  align-self: start;
 }
 .events-container .event-card .title {
   font-size: 32px;
@@ -42,6 +47,15 @@ h1 {
 }
 .events-container .event-card .about {
   margin: 12px 0 12px 0;
+}
+.events-container .event-card a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-end;
+}
+.events-container .event-card a:hover {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=events.css.map */

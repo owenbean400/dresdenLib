@@ -7,6 +7,7 @@ h1
 .events-container
     display: flex
     flex-wrap: wrap
+    margin: 8px 0 32px 0
     @media screen and ( min-width: nth($sizes, 1) - 24 )
         justify-content: space-between
     @media screen and ( max-width: nth($sizes, 1) - 24 )
@@ -17,6 +18,10 @@ h1
         background-color: nth($colors, 2)
         margin: 16px
         padding: 16px
+        display: flex
+        flex-direction: column
+        margin: 16px 16px auto 16px
+        align-self: start
 
         .title
             font-size: 32px
@@ -27,3 +32,11 @@ h1
 
         .about
             margin: 12px 0 12px 0
+
+        a
+            color: nth($colors, 5)
+            text-decoration: none
+            cursor: pointer
+            align-self: flex-end
+            &:hover
+                text-decoration: underline
