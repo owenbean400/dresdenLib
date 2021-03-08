@@ -80,7 +80,7 @@ Vue.component("Navbar", {
       for (let i = 1; i < slashCount; i++) {
         cdLeave += "../";
       }
-      cdLeave += "./";
+      cdLeave += "./dresdenLib/";
       return cdLeave + path;
     },
   },
