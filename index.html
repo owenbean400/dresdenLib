@@ -28,6 +28,7 @@
                 <div class="itemTitle" class="itemTitle">{{name}}</div>
                 <div v-for="info in item.stuff" class="itemInfo">
                     <h4 class="infoTitle">{{info.title}}</h5>
+                    <p v-if="info.subtitle">{{info.subtitle}}</p>
                     <p class="infoInfo">{{info.info}}</p>
                     <a v-bind:href="info.link" class="infoLink">More info</a>
                 </div>

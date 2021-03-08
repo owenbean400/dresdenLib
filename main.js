@@ -26,21 +26,9 @@ let items = {
     link: "./newsletter/newsletter.html",
   },
   Events: {
-    stuff: [
-      {
-        title: "Yard Sale",
-        subtitle: "on May 31, 2021",
-        info: "This year's reading theme is all about water! WOW",
-        link: "./events/yardsale.html",
-      },
-      {
-        title: "Book Donations",
-        subtitle: false,
-        info:
-          "These little ghosts will be a boo-tiful addition to your Halloween decorations!",
-        link: "./events/yardsale.html",
-      },
-    ],
+    //EJECT_EVENTS_START
+stuff: [{"title":"Launch Day Reminder","subtitle":"10/10/2020","info":"\rThe Dresden Rocket Club has been hard at work building their rockets and getting reading for the bi...","link":"htmlLoaded/event/launchDayReminder.html"},{"title":"Make Your Own Ghost At The Library","subtitle":"12/21/2021","info":"\rThese little ghosts will be a boo-tiful addition to your Halloween decorations! Join us for a morni...","link":"htmlLoaded/event/makeYourOwnGhostAtTheLibrary.html"},],
+//EJECT_EVENTS_END
     link: "./events.html",
   },
 };

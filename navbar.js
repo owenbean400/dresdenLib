@@ -2,7 +2,7 @@
 let links = {
   About: "/about/about.html",
   Newsletter: "/newsletter/newsletter.html",
-  Events: "./events.html",
+  Events: "events.html",
   FAQ: "faq.html",
   Catalog: "catalog.html",
 };
@@ -14,7 +14,7 @@ const NAV_HEAD_SIZE = 500; //size change text BABL to full out word
 //navbar component vue
 Vue.component("Navbar", {
   template: `<nav id="navbar" class="bg-dark" v-bind:class="phoneClass">
-            <a class="navlogo" href="index.html">{{logoName}}</a>
+            <a class="navlogo" :href="beginningDirectory('index.html')">{{logoName}}</a>
             <div class="link-container" v-bind:class="toggleShowPhoneNav">
                 <div class="phoneNavbar" v-bind:class="{none: !isPhone}">
                     <a class="navlogo">{{logoName}}</a>
@@ -22,7 +22,7 @@ Vue.component("Navbar", {
                 </div>
                 <div class="links">
                     <ol>
-                        <li v-for="(link, name) in links"><a v-bind:href="link">{{name}}</a></li>
+                        <li v-for="(link, name) in links"><a v-bind:href="beginningDirectory(link)">{{name}}</a></li>
                     </ol>
                 </div>
             </div>
@@ -68,6 +68,20 @@ Vue.component("Navbar", {
     hideLinks() {
       console.log("close");
       this.showPhoneLinks = false;
+    },
+    beginningDirectory(path) {
+      let cd = window.location.pathname;
+      let slashCount = 0;
+      while (cd.search("/") !== -1) {
+        cd = cd.substring(cd.search("/") + 1, cd.length);
+        slashCount++;
+      }
+      let cdLeave = "";
+      for (let i = 1; i < slashCount; i++) {
+        cdLeave += "../";
+      }
+      cdLeave += "./";
+      return cdLeave + path;
     },
   },
   computed: {
