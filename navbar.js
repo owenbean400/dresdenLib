@@ -70,17 +70,18 @@ Vue.component("Navbar", {
       this.showPhoneLinks = false;
     },
     beginningDirectory(path) {
-      let cd = window.location.pathname;
+      let cd = window.location.href;
+      console.log(window.location.href);
       let slashCount = 0;
       while (cd.search("/") !== -1) {
         cd = cd.substring(cd.search("/") + 1, cd.length);
         slashCount++;
       }
       let cdLeave = "";
-      for (let i = 1; i < slashCount; i++) {
+      for (let i = 3; i < slashCount; i++) {
         cdLeave += "../";
       }
-      cdLeave += "./dresdenLib/";
+      cdLeave += "./";
       console.log(cdLeave);
       console.log(cdLeave + path);
       return cdLeave + path;
