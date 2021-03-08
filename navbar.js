@@ -82,6 +82,7 @@ Vue.component("Navbar", {
       }
       stringCD = "/";
       filePath = filePath.substring(1, filePath.length);
+      console.log("checking if it's github page");
       if (realPath.search("github") !== -1) {
         console.log("ON GITHUB");
         filePath = filePath.substring(1, filePath.length);
@@ -94,7 +95,6 @@ Vue.component("Navbar", {
         );
       }
       console.log("real path: " + realPath);
-      console.log("new url: " + realPath + filePath);
       console.log("location: " + (stringCD + path));
       return stringCD + path;
     },
