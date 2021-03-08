@@ -89,7 +89,7 @@ Vue.component("Navbar", {
           filePath.search("/") + 1,
           filePath.length
         );
-        console.log("new filepath" + filePath);
+        console.log("new filepath: " + filePath);
       }
       while (filePath.search("/") !== -1) {
         stringCD += "../";
