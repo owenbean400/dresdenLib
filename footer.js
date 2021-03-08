@@ -52,7 +52,7 @@ Vue.component("Foot", {
                 </div>
                 <div>
                     <ol>
-                        <li v-for="(link, name) in data.links"><a :href="link">{{name}}</a></li>
+                        <li v-for="(link, name) in data.links"><a :href="beginningDirectory(link)">{{name}}</a></li>
                     </ol>
                 </div>
                 <p class="copyright">Copyright {{date.getFullYear()}} Bridge Academy Public Library</p>
@@ -77,6 +77,20 @@ Vue.component("Foot", {
         phoneString += phone.charAt(i);
       }
       return phoneString;
+    },
+    beginningDirectory(path) {
+      let cd = window.location.pathname;
+      let slashCount = 0;
+      while (cd.search("/") !== -1) {
+        cd = cd.substring(cd.search("/") + 1, cd.length);
+        slashCount++;
+      }
+      let cdLeave = "";
+      for (let i = 1; i < slashCount; i++) {
+        cdLeave += "../";
+      }
+      cdLeave += "./";
+      return cdLeave + path;
     },
   },
   data() {
