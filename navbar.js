@@ -77,13 +77,19 @@ Vue.component("Navbar", {
         cd = cd.substring(cd.search("/") + 1, cd.length);
         slashCount++;
       }
-      let cdLeave = "";
+      let href = window.location.href;
+      let url = href.substring(href.search("//") + 2, href.length);
+      let cdLeave =
+        href.substring(0, href.search("//") + 2) +
+        url.substring(0, url.search("/")) +
+        "/";
+      console.log("hey: " + cdLeave);
       for (let i = 3; i < slashCount; i++) {
         cdLeave += "../";
       }
       cdLeave += "./";
       console.log(cdLeave);
-      console.log(cdLeave + path);
+      console.log("PATH: " + cdLeave + path);
       return cdLeave + path;
     },
   },
