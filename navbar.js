@@ -81,6 +81,8 @@ Vue.component("Navbar", {
         cdLeave += "../";
       }
       cdLeave += "./dresdenLib/";
+      console.log(cdLeave);
+      console.log(cdLeave + path);
       return cdLeave + path;
     },
   },
