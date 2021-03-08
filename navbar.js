@@ -71,26 +71,29 @@ Vue.component("Navbar", {
     },
     beginningDirectory(path) {
       let cd = window.location.href;
-      console.log(window.location.href);
-      let slashCount = 0;
-      while (cd.search("/") !== -1) {
-        cd = cd.substring(cd.search("/") + 1, cd.length);
-        slashCount++;
+      let filePath = window.location.pathname;
+      let realPath;
+      console.log("cd: " + cd);
+      console.log("filePath: " + filePath);
+      if (filePath !== "/") {
+        realPath = cd.substring(cd.search("//") + 2, cd.search(filePath));
+      } else {
+        realPath = cd.substring(cd.search("//"), cd.length);
       }
-      let href = window.location.href;
-      let url = href.substring(href.search("//") + 2, href.length);
-      let cdLeave =
-        href.substring(0, href.search("//") + 2) +
-        url.substring(0, url.search("/")) +
-        "/";
-      console.log("hey: " + cdLeave);
-      for (let i = 3; i < slashCount; i++) {
-        cdLeave += "../";
+      stringCD = "./";
+      filePath = filePath.substring(1, filePath.length);
+      let count = 0;
+      while (filePath.search("/") !== -1) {
+        stringCD += "../";
+        filePath = filePath.substring(
+          filePath.search("/") + 1,
+          filePath.length
+        );
       }
-      cdLeave += "./";
-      console.log(cdLeave);
-      console.log("PATH: " + cdLeave + path);
-      return cdLeave + path;
+      console.log("real path: " + realPath);
+      console.log("new url: " + realPath + filePath);
+      console.log("location: " + (stringCD + path));
+      return stringCD + path;
     },
   },
   computed: {
