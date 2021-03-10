@@ -1,9 +1,0 @@
-Hey my name is Owen Bean, and I’m fresh out of high school wanting to go into front end development. During high school, I took graphic design and was doing great with photoshop CC and illustrator CC. Covid-19 hit during my senior year of HS so I learned HTML, CSS, and Javascript for fun. 
-
-I am currently taking this course to learn about computer science and programming. This will help me learn more about Java if I want to use it for backends and understanding how to create OOP to simplify coding as javascript has OOP. In my free time I am currently learning typescripts, which is a superset of javascript and other programs.
-
-My professional goal is to be able to start working on the front end of websites by the end of 2021. The technology that I like to use right now is HTML, CSS, Sass, ReactJS (with JSX), javascript, and GatsbyJS and would like to learn typescripts and VueJS. I have a website that I created in gatsbyJS, however, I plan to jazz up the site more after I complete more projects to put into my portfolio. Click here for the link :)
-
-Hobbies? Well I've been busy working at Shaw’s as a CSR(supervisor of checkout) and learning front end technology in my free time. Before when I had an abundant of free time, I’d workout, go for walks, knit, code, graphic designs, and play videogames.
-
-I do have pets that I love. I have three cats and one dog. My favorite cat is Rue though, because she is disabled in her arms, looks very cute, and a great snuggle buddy :) Here pictures of Rue and the other cat Wolfie down below VV

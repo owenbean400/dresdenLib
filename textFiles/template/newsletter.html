@@ -4,7 +4,7 @@
 <head>
     <title>BAPL</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <link rel="stylesheet" href="../../sassStyle/navbar.css"/>
+    <link rel="stylesheet" href="../../sassStyle/navbar.css" />
     <link rel="stylesheet" href="../../sassStyle/footer.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -16,8 +16,10 @@
     </div>
     <script src="../../navbar.js"></script>
 
-    <h1 style="margin-top: 120px">About</h1>
-    <p>Hold up</p>
+    <section style="width: calc(100% - 64px); padding: 0 32px;">
+        <h1 style="margin: 120px 0 0 0; text-align: center; font-size: 32px">{{DATE}} Newsletter</h1>
+        <p style="margin: 32px auto; max-width: 1000px;">{{OOPBA}}</p>
+    </section>
 
     <div id="footer">
         <Foot></Foot>

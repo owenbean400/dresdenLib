@@ -1,34 +1,49 @@
 //about context information for main web page
 let items = {
   Newsletter: {
+    //EJECT_NEWSLETTERS_START
     stuff: [
       {
-        title: "June 2020",
+        title: "2021 May",
         subtitle: false,
-        info: "Meet 3 live animals that use special",
-        link: "./newsletter/june2020.html",
+        info: "\r  After many year...",
+        link: "htmlLoaded/newsletter/july2021.html",
       },
       {
-        title: "May 2020",
+        title: "2021 February",
         subtitle: false,
-        info:
-          "Come use our rainbow of colors to create your own customized working pen for home or school or pass it on as a fun gift for a friend!",
-        link: "./newsletter/june2020.html",
+        info: "\rCHIP books: Thanks to a grant from the Community ...",
+        link: "htmlLoaded/newsletter/march2021.html",
       },
       {
-        title: "April 2020",
+        title: "2021 April",
         subtitle: false,
-        info:
-          "Bridge Academy Public Library will be raffling off a special basket filled with a bookstore gift certificate and other goodies for readers",
-        link: "./newsletter/june2020.html",
+        info: "\rDid you know?  The Maine Infonet Download Library...",
+        link: "htmlLoaded/newsletter/may2021.html",
       },
     ],
-    link: "./newsletter/newsletter.html",
+    //EJECT_NEWSLETTERS_END
+    link: "./newsletters.html",
   },
   Events: {
     //EJECT_EVENTS_START
-stuff: [{"title":"Launch Day Reminder","subtitle":"10/10/2020","info":"\rThe Dresden Rocket Club has been hard at work building their rockets and getting reading for the bi...","link":"htmlLoaded/event/launchDayReminder.html"},{"title":"Make Your Own Ghost At The Library","subtitle":"12/21/2021","info":"\rThese little ghosts will be a boo-tiful addition to your Halloween decorations! Join us for a morni...","link":"htmlLoaded/event/makeYourOwnGhostAtTheLibrary.html"},],
-//EJECT_EVENTS_END
+    stuff: [
+      {
+        title: "Launch Day Reminder",
+        subtitle: "10/10/2020",
+        info:
+          "\rThe Dresden Rocket Club has been hard at work building their rockets and getting reading for the bi...",
+        link: "htmlLoaded/event/launchDayReminder.html",
+      },
+      {
+        title: "Make Your Own Ghost At The Library",
+        subtitle: "12/21/2021",
+        info:
+          "\rThese little ghosts will be a boo-tiful addition to your Halloween decorations! Join us for a morni...",
+        link: "htmlLoaded/event/makeYourOwnGhostAtTheLibrary.html",
+      },
+    ],
+    //EJECT_EVENTS_END
     link: "./events.html",
   },
 };

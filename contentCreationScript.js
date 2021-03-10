@@ -29,10 +29,16 @@ function readFiles(dirname) {
             return;
           }
           let folderNow;
-          if (folderName === "event") {
-            foldersNow = new EventFolder(folderName);
-          } else {
-            foldersNow = new FolderTxt(folderName);
+          switch (folderName) {
+            case "event":
+              foldersNow = new EventFolder(folderName);
+              break;
+            case "newsletter":
+              foldersNow = new NewsletterFolder(folderName);
+              break;
+            default:
+              foldersNow = new FolderTxt(folderName);
+              break;
           }
           folders.forEach(function (fileName) {
             foldersNow.files.push(addWhichFile(folderName, dirname, fileName));
@@ -53,6 +59,13 @@ function addWhichFile(folderName, dirname, fileName) {
           encoding: "utf8",
         })
       );
+    case "newsletter":
+      return new NewsletterFile(
+        fileName,
+        fs.readFileSync(dirname + folderName + "/" + fileName, {
+          encoding: "utf8",
+        })
+      );
     default:
       return new FileTxt(
         fileName,
@@ -60,7 +73,6 @@ function addWhichFile(folderName, dirname, fileName) {
           encoding: "utf8",
         })
       );
-      break;
   }
 }
 
@@ -110,6 +122,30 @@ class EventFile extends FileTxt {
       }
     }
     return stringBuilt;
+  }
+}
+
+class NewsletterFile extends FileTxt {
+  constructor(fileName, text) {
+    let fullText = text;
+    while (text.search("}") !== -1) {
+      text = text.substring(text.search("}") + 1, text.length);
+    }
+    super(fileName, text);
+    this.date = this.finDate(fullText);
+  }
+  finDate(text) {
+    let dateString = "No Date";
+    if (text.search("{") >= 0) {
+      let stringInfo = text.substring(text.search("{") + 1, text.search("}"));
+      if (stringInfo.toLowerCase().search("date:") !== -1) {
+        dateString = stringInfo.substring(
+          stringInfo.search(":") + 1,
+          stringInfo.length
+        );
+      }
+    }
+    return new Date(dateString);
   }
 }
 
@@ -225,7 +261,9 @@ class EventFolder extends FolderTxt {
     while (c < 2 && Object.keys(aboutJSON)[c] !== undefined) {
       stuff["title"] = Object.keys(aboutJSON)[c];
       stuff["subtitle"] = aboutJSON[Object.keys(aboutJSON)[c]]["date"];
-      stuff["info"] = aboutJSON[Object.keys(aboutJSON)[c]]["about"];
+      stuff["info"] = removeHTMLTags(
+        aboutJSON[Object.keys(aboutJSON)[c]]["about"]
+      );
       stuff["link"] = aboutJSON[Object.keys(aboutJSON)[c]]["link"];
       stuffs.push(JSON.stringify(stuff) + ",");
       c++;
@@ -248,10 +286,154 @@ class EventFolder extends FolderTxt {
         mainFile.search("//EJECT_EVENTS_END"),
         mainFile.length
       );
-    console.log("MAIN INJECTED");
-    fs.writeFile("main.js", mainFile, (err) => {
-      if (err) console.log(err);
-    });
+    try {
+      const data = fs.writeFileSync("main.js", mainFile);
+    } catch (err) {
+      err(err);
+    }
+  }
+}
+
+class NewsletterFolder extends FolderTxt {
+  constructor(name) {
+    console.log(name);
+    super(name);
+  }
+  saveFiles() {
+    if (this.html !== undefined) {
+      let newsletterInfo = {};
+      for (let file of this.files) {
+        let fileData = this.replaceAllStrings(this.html, wordSwitch, file.text);
+        if (!fs.existsSync(htmlLoaderFile + this.name)) {
+          fs.mkdirSync(htmlLoaderFile + this.name);
+        }
+        fileData = this.replaceAllStrings(
+          fileData,
+          dateSwitch,
+          this.dateToNewsletterTitle(file.date)
+        );
+        newsletterInfo[this.dateToNewsletterTitle(file.date)] = {
+          about: file.text.substring(0, 50) + "...",
+          date: this.dateToNewsletterTitle(file.date),
+          link: htmlLoaderFile + this.name + "/" + file.fileName + ".html",
+        };
+        fs.writeFile(
+          htmlLoaderFile + this.name + "/" + file.fileName + ".html",
+          fileData,
+          (err) => {
+            if (err) err(err);
+          }
+        );
+        console.log(
+          htmlLoaderFile + this.name + "/" + file.fileName + ".html saved!!"
+        );
+      }
+      this.injectNewsletterLinks(newsletterInfo);
+      this.injectEventsMainPage(newsletterInfo);
+    } else {
+      console.log("ERROR: File Not Load :: No HTML Template");
+    }
+  }
+  injectNewsletterLinks(aboutJSON) {
+    let newsletterFile = fs.readFileSync("events.js").toString();
+    newsletterFile = newsletterFile.substring(
+      newsletterFile.search("//EJECTION_AWAY"),
+      newsletterFile.length
+    );
+    newsletterFile =
+      "newsletters = " + JSON.stringify(aboutJSON) + "\n" + newsletterFile;
+    try {
+      const data = fs.writeFileSync("newsletter.js", newsletterFile);
+    } catch (err) {
+      err(err);
+    }
+  }
+  injectEventsMainPage(aboutJSON) {
+    let stuffs = [];
+    let stuff = {};
+    let c = 0;
+    while (c < 3 && Object.keys(aboutJSON)[c] !== undefined) {
+      stuff["title"] = Object.keys(aboutJSON)[c];
+      stuff["subtitle"] = false;
+      stuff["info"] = removeHTMLTags(
+        aboutJSON[Object.keys(aboutJSON)[c]]["about"]
+      );
+      stuff["link"] = aboutJSON[Object.keys(aboutJSON)[c]]["link"];
+      stuffs.push(JSON.stringify(stuff) + ",");
+      c++;
+    }
+    let injectionString = "stuff: [";
+    for (let objectString of stuffs) {
+      injectionString += objectString;
+    }
+    injectionString += "],";
+    let mainFile = fs.readFileSync("main.js").toString();
+    mainFile =
+      mainFile.substring(
+        0,
+        mainFile.search("//EJECT_NEWSLETTERS_START") +
+          "//EJECT_NEWSLETTERS_START".length
+      ) +
+      "\n" +
+      injectionString +
+      "\n" +
+      mainFile.substring(
+        mainFile.search("//EJECT_NEWSLETTERS_END"),
+        mainFile.length
+      );
+    try {
+      const data = fs.writeFileSync("main.js", mainFile);
+    } catch (err) {
+      err(err);
+    }
+  }
+  dateToNewsletterTitle(date) {
+    let monthString;
+    switch (date.getMonth()) {
+      case 0:
+        monthString = "January";
+        break;
+      case 1:
+        monthString = "February";
+        break;
+      case 2:
+        monthString = "March";
+        break;
+      case 3:
+        monthString = "April";
+        break;
+      case 4:
+        monthString = "May";
+        break;
+      case 5:
+        monthString = "June";
+        break;
+      case 6:
+        monthString = "July";
+        break;
+      case 7:
+        monthString = "August";
+        break;
+      case 8:
+        monthString = "September";
+        break;
+      case 9:
+        monthString = "October";
+        break;
+      case 10:
+        monthString = "November";
+        break;
+      case 11:
+        monthString = "December";
+        break;
+      default:
+        monthString = "Month is Null!!";
+        break;
+    }
+    return date.getFullYear() + " " + monthString;
+  }
+  sortDates() {
+    this.files = this.files.sort((a, b) => b.date - a.date);
   }
 }
 
@@ -266,6 +448,14 @@ function dateToString(date) {
   let stringDate =
     date.getMonth() + 1 + "/" + (date.getDate() + 1) + "/" + date.getFullYear();
   return stringDate;
+}
+
+function removeHTMLTags(text) {
+  const HTML_REGEX = /<.*>/;
+  while (text.search(HTML_REGEX) !== -1) {
+    text = text.replace(HTML_REGEX, "");
+  }
+  return text;
 }
 
 function err(err) {
