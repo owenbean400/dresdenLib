@@ -89,6 +89,7 @@ Vue.component("Navbar", {
           filePath.search("/") + 1,
           filePath.length
         );
+        filePath = filePath.replace(".html");
         console.log("new filepath: " + filePath);
       }
       while (filePath.search("/") !== -1) {
