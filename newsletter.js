@@ -1,18 +1,18 @@
 newsletters = {
   "2021 May": {
-    about: "\r<b>New Book by local author:</b>  After many year...",
+    about: "\rNew Book by local author:  After many years of ex...",
     date: "2021 May",
-    link: "htmlLoaded/newsletter/july2021.html",
+    link: "newsletter/july2021.html",
   },
   "2021 February": {
     about: "\rCHIP books: Thanks to a grant from the Community ...",
     date: "2021 February",
-    link: "htmlLoaded/newsletter/march2021.html",
+    link: "newsletter/march2021.html",
   },
   "2021 April": {
     about: "\rDid you know?  The Maine Infonet Download Library...",
     date: "2021 April",
-    link: "htmlLoaded/newsletter/may2021.html",
+    link: "newsletter/may2021.html",
   },
 };
 //EJECTION_AWAY

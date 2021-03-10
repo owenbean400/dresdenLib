@@ -1,26 +1,34 @@
+/*
+ * NodeJS Script that creates events and newsletters HTML pages
+ *
+ */
+
 var fs = require("fs");
 
-var dirname = "textFiles/";
-var htmlLoaderFile = "htmlLoaded/";
-var templateFileDir = "template";
-var wordSwitch = "{{OOPBA}}";
-var dateSwitch = "{{DATE}}";
-var titleSwitch = "{{TITLE}}";
+var dirname = "textFiles/"; //Main directory folder
+var templateFileDir = "template"; //name of folder with HTML Templates
+var wordSwitch = "{{OOPBA}}"; //Key word in HTML template to switch words
+var dateSwitch = "{{DATE}}"; //Key word in HTML template to switch date
+var titleSwitch = "{{TITLE}}"; //Key word in HTML template to switch title
 
-var foldersArray = [];
-
-readFiles(dirname);
+saveAllFiles(readFiles(dirname));
 
 /**
+ * Reads all the files and templates in the directory.
+ * From the files and folders, there are folder classes and
+ * file classes.
  *
- * @param {*} dirname the directory of all the files
+ * @param {string} dirname - Directory name of text files
+ * @returns {Objects[]} - Array of folder classes for making HTML pages
  */
 function readFiles(dirname) {
+  let foldersArray = [];
   fs.readdir(dirname, function (err, filenames) {
     if (err) {
       err(err);
       return;
     }
+    //loop through each directory
     filenames.forEach(function (folderName) {
       if (folderName !== templateFileDir) {
         fs.readdir(dirname + folderName, function (err, folders) {
@@ -29,6 +37,7 @@ function readFiles(dirname) {
             return;
           }
           let folderNow;
+          //checks if it's a special folder
           switch (folderName) {
             case "event":
               foldersNow = new EventFolder(folderName);
@@ -48,8 +57,17 @@ function readFiles(dirname) {
       }
     });
   });
+  return foldersArray;
 }
 
+/**
+ * Determines which file class should be used based on folder name
+ *
+ * @param {string} folderName - Name of the folder the file is in
+ * @param {string} dirname - The directory of all the text files
+ * @param {string} fileName - Name of the file
+ * @returns {Object[]} - Specific file object depending on the folder name
+ */
 function addWhichFile(folderName, dirname, fileName) {
   switch (folderName) {
     case "event":
@@ -77,16 +95,29 @@ function addWhichFile(folderName, dirname, fileName) {
 }
 
 /**
- * Class for each file
+ * @class regular text file
  */
 class FileTxt {
+  /**
+   * Creates an instance of FileTxt
+   *
+   * @param {string} fileName - Name of file
+   * @param {string} text - Text within the file
+   */
   constructor(fileName, text) {
     this.fileName = fileName.replace(".txt", "");
     this.text = text.replace(/\n/g, "");
   }
 }
 
+/** @class event text file */
 class EventFile extends FileTxt {
+  /**
+   * Creates an instance of EventFile
+   *
+   * @param {string} fileName - Name of file
+   * @param {string} text - Text within the file
+   */
   constructor(fileName, text) {
     let fullText = text;
     while (text.search("}") !== -1) {
@@ -96,6 +127,12 @@ class EventFile extends FileTxt {
     this.date = this.finDate(fullText);
     this.title = this.pascalCaseToTitle(fileName);
   }
+  /**
+   * Looks for date within the file by looking for {date:12-02-2021}
+   *
+   * @param {string} text - Text within the file
+   * @returns {Date} - Date object of the date set in file
+   */
   finDate(text) {
     let dateString = "No Date";
     if (text.search("{") >= 0) {
@@ -109,6 +146,13 @@ class EventFile extends FileTxt {
     }
     return new Date(dateString);
   }
+  /**
+   * Turns the name of the file pascalCase or CamelCase to a string
+   * with spaces and capital letters.
+   *
+   * @param {string} fileName - Name of the file
+   * @returns {string} - Title of file
+   */
   pascalCaseToTitle(fileName) {
     let stringBuilt = "";
     fileName = fileName.substring(0, fileName.search(".txt"));
@@ -125,15 +169,29 @@ class EventFile extends FileTxt {
   }
 }
 
+/** @class newsletter text file */
 class NewsletterFile extends FileTxt {
+  /**
+   * Creates an instance of NewsletterFile
+   *
+   * @param {string} fileName - Name of file
+   * @param {string} text - Text within the file
+   */
   constructor(fileName, text) {
     let fullText = text;
+    //remove start of the text file info
     while (text.search("}") !== -1) {
       text = text.substring(text.search("}") + 1, text.length);
     }
     super(fileName, text);
     this.date = this.finDate(fullText);
   }
+  /**
+   * Looks for date within the file by looking for {date:12-02-2021}
+   *
+   * @param {string} text - Text within the file
+   * @returns {Date} - Date object of the date set in file
+   */
   finDate(text) {
     let dateString = "No Date";
     if (text.search("{") >= 0) {
@@ -149,14 +207,18 @@ class NewsletterFile extends FileTxt {
   }
 }
 
-/**
- * Class for each folder
- */
+/** @class Folder class of text files */
 class FolderTxt {
   files = [];
+  /**
+   * Creates an instance of FolderTxt
+   *
+   * @param {string} name - Name of the folder
+   */
   constructor(name) {
     this.name = name;
     let dirHTMLTemp = dirname + templateFileDir + "/" + name + ".html";
+    //check if there a HTML template with the folder name
     if (fs.existsSync(dirHTMLTemp)) {
       this.html = fs.readFileSync(dirHTMLTemp, {
         encoding: "utf8",
@@ -172,29 +234,44 @@ class FolderTxt {
       );
     }
   }
+  /**
+   * adds file objects an array of the files within the folder
+   *
+   * @param {File Object} file - File object that is in the folder
+   */
   addFile(file) {
     this.files.push(file);
   }
+  /**
+   * saves each file within the folder as new HTML page
+   */
   saveFiles() {
     for (let file of this.files) {
       if (this.html !== undefined) {
         let fileData = this.replaceAllStrings(this.html, wordSwitch, file.text);
-        if (!fs.existsSync(htmlLoaderFile + this.name)) {
-          fs.mkdirSync(htmlLoaderFile + this.name);
+        if (!fs.existsSync(this.name)) {
+          fs.mkdirSync(this.name);
         }
         fs.writeFile(
-          htmlLoaderFile + this.name + "/" + file.fileName + ".html",
+          this.name + "/" + file.fileName + ".html",
           fileData,
           (err) => {
             if (err) err(err);
           }
         );
-        console.log(
-          htmlLoaderFile + this.name + "/" + file.fileName + ".html saved!!"
-        );
+        console.log(this.name + "/" + file.fileName + ".html saved!!");
       }
     }
   }
+  /**
+   * removes all matches of a string with new string.
+   * used for switch template words with content
+   *
+   * @param {string} text - text that is being filtered
+   * @param {string | regex} searching - string or regex of word that is being matched
+   * @param {string} replacer - string that is replacing the matched string or regex
+   * @returns {string} - updated text with replaced words
+   */
   replaceAllStrings(text, searching, replacer) {
     while (text.search(searching) !== -1) {
       text = text.replace(searching, replacer);
@@ -203,46 +280,65 @@ class FolderTxt {
   }
 }
 
+/** @class Folder class of event text files */
 class EventFolder extends FolderTxt {
+  /**
+   * Creates an instance of EventFolder
+   *
+   * @param {string} name - Name of the folder aka should be "event"
+   */
   constructor(name) {
     super(name);
   }
+  /**
+   * saves each file within the folder as new HTML page
+   * @override
+   */
   saveFiles() {
     if (this.html !== undefined) {
       let eventsJSON = {};
       for (let file of this.files) {
         let fileData = this.replaceAllStrings(this.html, wordSwitch, file.text);
-        if (!fs.existsSync(htmlLoaderFile + this.name)) {
-          fs.mkdirSync(htmlLoaderFile + this.name);
+        //make new directory if it's not there
+        if (!fs.existsSync(this.name)) {
+          fs.mkdirSync(this.name);
         }
+        //switching all the template words with context
         fileData = this.replaceAllStrings(
           fileData,
           dateSwitch,
           dateToString(file.date)
         );
         fileData = this.replaceAllStrings(fileData, titleSwitch, file.title);
+        //creating object of file information for injecting JSON in VueJS files
         eventsJSON[file.title] = {
           about: file.text.substring(0, 100) + "...",
           date: dateToString(file.date),
-          link: htmlLoaderFile + this.name + "/" + file.fileName + ".html",
+          link: this.name + "/" + file.fileName + ".html",
         };
+        //writes the file
         fs.writeFile(
-          htmlLoaderFile + this.name + "/" + file.fileName + ".html",
+          this.name + "/" + file.fileName + ".html",
           fileData,
           (err) => {
             if (err) err(err);
           }
         );
-        console.log(
-          htmlLoaderFile + this.name + "/" + file.fileName + ".html saved!!"
-        );
+        console.log(this.name + "/" + file.fileName + ".html saved!!");
       }
+      //injection methods
       this.injectEventLinks(eventsJSON);
       this.injectEventsMainPage(eventsJSON);
     } else {
       console.log("ERROR: File Not Load :: No HTML Template");
     }
   }
+  /**
+   * Injects information about the event file in events page
+   * to make dynamic cards that links to each event page
+   *
+   * @param {Object} aboutJSON - Object of the event info
+   */
   injectEventLinks(aboutJSON) {
     let eventFile = fs.readFileSync("events.js").toString();
     eventFile = eventFile.substring(
@@ -250,10 +346,18 @@ class EventFolder extends FolderTxt {
       eventFile.length
     );
     eventFile = "events = " + JSON.stringify(aboutJSON) + "\n" + eventFile;
-    fs.writeFile("events.js", eventFile, (err) => {
-      if (err) console.log(err);
-    });
+    try {
+      const data = fs.writeFileSync("events.js", eventFile);
+    } catch (err) {
+      err(err);
+    }
   }
+  /**
+   *  Injects information about two of the events onto the main page
+   *  as a teaser to look into
+   *
+   * @param {Object} aboutJSON - Object of the event info
+   */
   injectEventsMainPage(aboutJSON) {
     let stuffs = [];
     let stuff = {};
@@ -294,18 +398,28 @@ class EventFolder extends FolderTxt {
   }
 }
 
+/** @class Folder class of newsletter text files */
 class NewsletterFolder extends FolderTxt {
+  /**
+   * Creates an instance of NewsletterFolder
+   *
+   * @param {string} name - Name of the folder aka should be "newsletter"
+   */
   constructor(name) {
     console.log(name);
     super(name);
   }
+  /**
+   * saves each file within the folder as new HTML page
+   * @override
+   */
   saveFiles() {
     if (this.html !== undefined) {
       let newsletterInfo = {};
       for (let file of this.files) {
         let fileData = this.replaceAllStrings(this.html, wordSwitch, file.text);
-        if (!fs.existsSync(htmlLoaderFile + this.name)) {
-          fs.mkdirSync(htmlLoaderFile + this.name);
+        if (!fs.existsSync(this.name)) {
+          fs.mkdirSync(this.name);
         }
         fileData = this.replaceAllStrings(
           fileData,
@@ -315,18 +429,16 @@ class NewsletterFolder extends FolderTxt {
         newsletterInfo[this.dateToNewsletterTitle(file.date)] = {
           about: file.text.substring(0, 50) + "...",
           date: this.dateToNewsletterTitle(file.date),
-          link: htmlLoaderFile + this.name + "/" + file.fileName + ".html",
+          link: this.name + "/" + file.fileName + ".html",
         };
         fs.writeFile(
-          htmlLoaderFile + this.name + "/" + file.fileName + ".html",
+          this.name + "/" + file.fileName + ".html",
           fileData,
           (err) => {
             if (err) err(err);
           }
         );
-        console.log(
-          htmlLoaderFile + this.name + "/" + file.fileName + ".html saved!!"
-        );
+        console.log(this.name + "/" + file.fileName + ".html saved!!");
       }
       this.injectNewsletterLinks(newsletterInfo);
       this.injectEventsMainPage(newsletterInfo);
@@ -334,12 +446,19 @@ class NewsletterFolder extends FolderTxt {
       console.log("ERROR: File Not Load :: No HTML Template");
     }
   }
+  /**
+   * Injects information about the newletters file in newletters page
+   * to make dynamic cards that links to each newletter page
+   *
+   * @param {Object} aboutJSON - Object of the newletter info
+   */
   injectNewsletterLinks(aboutJSON) {
-    let newsletterFile = fs.readFileSync("events.js").toString();
+    let newsletterFile = fs.readFileSync("newsletter.js").toString();
     newsletterFile = newsletterFile.substring(
       newsletterFile.search("//EJECTION_AWAY"),
       newsletterFile.length
     );
+    console.log(newsletterFile);
     newsletterFile =
       "newsletters = " + JSON.stringify(aboutJSON) + "\n" + newsletterFile;
     try {
@@ -348,6 +467,12 @@ class NewsletterFolder extends FolderTxt {
       err(err);
     }
   }
+  /**
+   *  Injects information about three of the latest newsletters onto the main page
+   *  as a teaser to look into
+   *
+   * @param {Object} aboutJSON - Object of the newsletter info
+   */
   injectEventsMainPage(aboutJSON) {
     let stuffs = [];
     let stuff = {};
@@ -387,6 +512,12 @@ class NewsletterFolder extends FolderTxt {
       err(err);
     }
   }
+  /**
+   * Changes the date to a string for displaying on website
+   *
+   * @param {Date} date - Date Object of newsletter
+   * @returns {string} - String of the year and month
+   */
   dateToNewsletterTitle(date) {
     let monthString;
     switch (date.getMonth()) {
@@ -432,24 +563,46 @@ class NewsletterFolder extends FolderTxt {
     }
     return date.getFullYear() + " " + monthString;
   }
+  /**
+   * Rearrange file in files by date (for the three latest newsletter on main page)
+   */
   sortDates() {
     this.files = this.files.sort((a, b) => b.date - a.date);
   }
 }
 
-setTimeout(function test() {
-  console.log(foldersArray.length);
-  for (foldez of foldersArray) {
-    foldez.saveFiles();
-  }
-}, 5000);
+/**
+ * Saves each file in a folder of an array of Folder Objects
+ *
+ * @param {Folder Object[]} foldersArray - Array of folders
+ */
+function saveAllFiles(foldersArray) {
+  setTimeout(function test() {
+    console.log(foldersArray.length);
+    for (foldez of foldersArray) {
+      foldez.saveFiles();
+    }
+  }, 5000);
+}
 
+/**
+ * Changes the date to a string
+ *
+ * @param {Date} date - The date
+ * @returns {string} - String of the day, month, and year as MM/DD/YYYY
+ */
 function dateToString(date) {
   let stringDate =
     date.getMonth() + 1 + "/" + (date.getDate() + 1) + "/" + date.getFullYear();
   return stringDate;
 }
 
+/**
+ * Removes all HTML tags from the text
+ *
+ * @param {string} text - The text
+ * @returns {string} - Updated text
+ */
 function removeHTMLTags(text) {
   const HTML_REGEX = /<.*>/;
   while (text.search(HTML_REGEX) !== -1) {

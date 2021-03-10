@@ -2,48 +2,14 @@
 let items = {
   Newsletter: {
     //EJECT_NEWSLETTERS_START
-    stuff: [
-      {
-        title: "2021 May",
-        subtitle: false,
-        info: "\r  After many year...",
-        link: "htmlLoaded/newsletter/july2021.html",
-      },
-      {
-        title: "2021 February",
-        subtitle: false,
-        info: "\rCHIP books: Thanks to a grant from the Community ...",
-        link: "htmlLoaded/newsletter/march2021.html",
-      },
-      {
-        title: "2021 April",
-        subtitle: false,
-        info: "\rDid you know?  The Maine Infonet Download Library...",
-        link: "htmlLoaded/newsletter/may2021.html",
-      },
-    ],
-    //EJECT_NEWSLETTERS_END
+stuff: [{"title":"2021 May","subtitle":false,"info":"\rNew Book by local author:  After many years of ex...","link":"newsletter/july2021.html"},{"title":"2021 February","subtitle":false,"info":"\rCHIP books: Thanks to a grant from the Community ...","link":"newsletter/march2021.html"},{"title":"2021 April","subtitle":false,"info":"\rDid you know?  The Maine Infonet Download Library...","link":"newsletter/may2021.html"},],
+//EJECT_NEWSLETTERS_END
     link: "./newsletters.html",
   },
   Events: {
     //EJECT_EVENTS_START
-    stuff: [
-      {
-        title: "Launch Day Reminder",
-        subtitle: "10/10/2020",
-        info:
-          "\rThe Dresden Rocket Club has been hard at work building their rockets and getting reading for the bi...",
-        link: "htmlLoaded/event/launchDayReminder.html",
-      },
-      {
-        title: "Make Your Own Ghost At The Library",
-        subtitle: "12/21/2021",
-        info:
-          "\rThese little ghosts will be a boo-tiful addition to your Halloween decorations! Join us for a morni...",
-        link: "htmlLoaded/event/makeYourOwnGhostAtTheLibrary.html",
-      },
-    ],
-    //EJECT_EVENTS_END
+stuff: [{"title":"Launch Day Reminder","subtitle":"10/10/2020","info":"\rThe Dresden Rocket Club has been hard at work building their rockets and getting reading for the bi...","link":"event/launchDayReminder.html"},{"title":"Make Your Own Ghost At The Library","subtitle":"12/21/2021","info":"\rThese little ghosts will be a boo-tiful addition to your Halloween decorations! Join us for a morni...","link":"event/makeYourOwnGhostAtTheLibrary.html"},],
+//EJECT_EVENTS_END
     link: "./events.html",
   },
 };
