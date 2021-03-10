@@ -77,18 +77,31 @@ Vue.component("Foot", {
       return phoneString;
     },
     beginningDirectory(path) {
-      let cd = window.location.pathname;
-      let slashCount = 0;
-      while (cd.search("/") !== -1) {
-        cd = cd.substring(cd.search("/") + 1, cd.length);
-        slashCount++;
+      let cd = window.location.href;
+      let filePath = window.location.pathname;
+      let realPath;
+      if (filePath !== "/") {
+        realPath = cd.substring(cd.search("//") + 2, cd.search(filePath));
+      } else {
+        realPath = cd.substring(cd.search("//"), cd.length);
       }
-      let cdLeave = "";
-      for (let i = 1; i < slashCount; i++) {
-        cdLeave += "../";
+      stringCD = "";
+      filePath = filePath.substring(1, filePath.length);
+      if (realPath.search("github") !== -1) {
+        filePath = filePath.substring(
+          filePath.search("/") + 1,
+          filePath.length
+        );
+        filePath = filePath.replace(".html");
       }
-      cdLeave += "./";
-      return cdLeave + path;
+      while (filePath.search("/") !== -1) {
+        stringCD += "../";
+        filePath = filePath.substring(
+          filePath.search("/") + 1,
+          filePath.length
+        );
+      }
+      return stringCD + path;
     },
   },
   data() {

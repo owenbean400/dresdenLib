@@ -71,8 +71,6 @@ Vue.component("Navbar", {
       let cd = window.location.href;
       let filePath = window.location.pathname;
       let realPath;
-      console.log("cd: " + cd);
-      console.log("filePath: " + filePath);
       if (filePath !== "/") {
         realPath = cd.substring(cd.search("//") + 2, cd.search(filePath));
       } else {
@@ -80,15 +78,12 @@ Vue.component("Navbar", {
       }
       stringCD = "";
       filePath = filePath.substring(1, filePath.length);
-      console.log("checking if it's github page");
       if (realPath.search("github") !== -1) {
-        console.log("ON GITHUB");
         filePath = filePath.substring(
           filePath.search("/") + 1,
           filePath.length
         );
         filePath = filePath.replace(".html");
-        console.log("new filepath: " + filePath);
       }
       while (filePath.search("/") !== -1) {
         stringCD += "../";
@@ -97,8 +92,6 @@ Vue.component("Navbar", {
           filePath.length
         );
       }
-      console.log("real path: " + realPath);
-      console.log("location: " + (stringCD + path));
       return stringCD + path;
     },
   },
