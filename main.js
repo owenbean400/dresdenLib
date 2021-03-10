@@ -53,6 +53,7 @@ let about = {
   History: {
     history:
       "At one time there were 10 school districts [in Dresden,] each with its own one-room building. Students, especially the boys, attended when they were not needed on the farm. It was not until the latter part of the 1800's that some type of higher education was available. By 1890 Bridge Academy was established, by private endowment, providing the type of education that enabled young adults to go out into the world in other than the labor field...",
+    link: "history.html",
   },
   Hours: {
     time: {

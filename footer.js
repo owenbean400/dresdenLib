@@ -20,11 +20,9 @@ let footerLinks = {
     },
   },
   links: {
-    About: "/about/about.html",
+    About: "history.html",
     Newsletter: "newsletters.html",
-    Events: "./events.html",
-    FAQ: "faq.html",
-    Catalog: "catalog.html",
+    Events: "events.html",
   },
 };
 

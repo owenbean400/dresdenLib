@@ -1,10 +1,8 @@
 //JSON object of links name with html file location
 let links = {
-  About: "/about/about.html",
+  About: "history.html",
   Newsletter: "newsletters.html",
   Events: "events.html",
-  FAQ: "faq.html",
-  Catalog: "catalog.html",
 };
 
 //variable constants
@@ -17,7 +15,7 @@ Vue.component("Navbar", {
             <a class="navlogo" :href="beginningDirectory('index.html')">{{logoName}}</a>
             <div class="link-container" v-bind:class="toggleShowPhoneNav">
                 <div class="phoneNavbar" v-bind:class="{none: !isPhone}">
-                    <a class="navlogo">{{logoName}}</a>
+                    <a class="navlogo" :href="beginningDirectory('index.html')">{{logoName}}</a>
                     <div v-on:click="hideLinks" class="x">X</div>
                 </div>
                 <div class="links">
