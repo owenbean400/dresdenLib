@@ -9,6 +9,45 @@ body
     padding: 0
     margin: 0
 
+.book-sale-img
+    $borderWidth: 20px
+    background-color: black
+    width: calc(100% - 32px)
+    height: 240px
+    background-image: url("/images/bookshelf.png")
+    background-position: center
+    color: white
+    margin: 0 auto
+    display: flex
+    flex-direction: column
+    align-content: center
+    justify-content: space-evenly
+    text-shadow: 0px 0px 10px black
+    border-top: nth($colors, 2) $borderWidth solid
+    border-bottom: nth($colors, 2) $borderWidth solid
+
+    h4
+        font-size: nth($fontSizes, 5)
+        text-align: center
+        margin: 0 12px
+
+    .donation-container
+        margin: 0 auto
+
+        p
+            margin: 0
+            font-size: nth($fontSizes, 3)
+            text-align: left
+
+    .info-sale-container
+        justify-self: baseline
+        align-self: center
+        margin: 0
+        p
+            margin: 0
+            font-size: nth($fontSizes, 2)
+            text-align: center
+
 .headerImage
     margin-top: 64px
     height: 300px
@@ -20,6 +59,25 @@ body
 
 .contentRandy
     padding: 8 16px
+
+.donationContainer
+    margin: 16px
+    width: calc(100% - 32px)
+
+    .donationInfo
+        display: grid
+        background-color: $itemBackground
+        @media screen and ( max-width: 768px )
+            grid-template-columns: auto
+        @media screen and ( min-width: 768px )
+            grid-template-columns: auto auto
+
+        p
+            padding: 8px 16px
+            margin: 0
+            border-bottom: $itemBorder
+            border-right: $itemBorder
+            border-left: $itemBorder
 
 .itemsContainer
     display: flex
@@ -55,7 +113,7 @@ body
     background-color: nth($colors, 2)
     padding: 8px 0 8px 8px
     font-weight: 700
-    font-size: nth($fontSizes, 4)
+    font-size: nth($fontSizes, 2)
 
 .itemInfo
     background-color: $itemBackground

@@ -2,13 +2,13 @@
 let items = {
   Newsletter: {
     //EJECT_NEWSLETTERS_START
-stuff: [{"title":"2021 May","subtitle":false,"info":"\rNew Book by local author:  After many years of ex...","link":"newsletter/july2021.html"},{"title":"2021 February","subtitle":false,"info":"\rCHIP books: Thanks to a grant from the Community ...","link":"newsletter/march2021.html"},{"title":"2021 April","subtitle":false,"info":"\rDid you know?  The Maine Infonet Download Library...","link":"newsletter/may2021.html"},],
+stuff: [{"title":"2021 March","subtitle":false,"info":"\rFrom the developer -- Currently, newsletter page ...","link":"newsletter/march2021.html"},],
 //EJECT_NEWSLETTERS_END
     link: "./newsletters.html",
   },
   Events: {
     //EJECT_EVENTS_START
-stuff: [{"title":"Launch Day Reminder","subtitle":"10/10/2020","info":"\rThe Dresden Rocket Club has been hard at work building their rockets and getting reading for the bi...","link":"event/launchDayReminder.html"},{"title":"Make Your Own Ghost At The Library","subtitle":"12/21/2021","info":"\rThese little ghosts will be a boo-tiful addition to your Halloween decorations! Join us for a morni...","link":"event/makeYourOwnGhostAtTheLibrary.html"},],
+stuff: [{"title":" Book , Bake ,  and Plant Sale","subtitle":"5/30/2021","info":"\rOur book, bake, and plant sale...","link":"event/Book,Bake, andPlantSale.html"},{"title":"Summer Reading Program","subtitle":"6/23/2020","info":"\rOur annual Summer Reading Program Begins...","link":"event/summerReadingProgram.html"},],
 //EJECT_EVENTS_END
     link: "./events.html",
   },

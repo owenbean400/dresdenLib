@@ -17,6 +17,46 @@ body {
   margin: 0;
 }
 
+.book-sale-img {
+  background-color: black;
+  width: calc(100% - 32px);
+  height: 240px;
+  background-image: url("/images/bookshelf.png");
+  background-position: center;
+  color: white;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+  text-shadow: 0px 0px 10px black;
+  border-top: #C4A287 20px solid;
+  border-bottom: #C4A287 20px solid;
+}
+.book-sale-img h4 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 0 12px;
+}
+.book-sale-img .donation-container {
+  margin: 0 auto;
+}
+.book-sale-img .donation-container p {
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: left;
+}
+.book-sale-img .info-sale-container {
+  justify-self: baseline;
+  align-self: center;
+  margin: 0;
+}
+.book-sale-img .info-sale-container p {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
 .headerImage {
   margin-top: 64px;
   height: 300px;
@@ -29,6 +69,32 @@ body {
 
 .contentRandy {
   padding: 8 16px;
+}
+
+.donationContainer {
+  margin: 16px;
+  width: calc(100% - 32px);
+}
+.donationContainer .donationInfo {
+  display: grid;
+  background-color: whitesmoke;
+}
+@media screen and (max-width: 768px) {
+  .donationContainer .donationInfo {
+    grid-template-columns: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .donationContainer .donationInfo {
+    grid-template-columns: auto auto;
+  }
+}
+.donationContainer .donationInfo p {
+  padding: 8px 16px;
+  margin: 0;
+  border-bottom: solid lightgray 1px;
+  border-right: solid lightgray 1px;
+  border-left: solid lightgray 1px;
 }
 
 .itemsContainer {
@@ -87,7 +153,7 @@ body {
   background-color: #C4A287;
   padding: 8px 0 8px 8px;
   font-weight: 700;
-  font-size: 24;
+  font-size: 1rem;
 }
 
 .itemInfo {
@@ -105,15 +171,15 @@ body {
 }
 .itemInfo .infoTitle {
   margin: 0 0 4px 0;
-  font-size: 18;
+  font-size: 1.5rem;
 }
 .itemInfo .infoInfo {
   margin: 0;
-  font-size: 14;
+  font-size: 1rem;
 }
 .itemInfo .infoLink {
   margin: 0;
-  font-size: 12;
+  font-size: 0.75rem;
   float: right;
   display: block;
   color: #545454;
@@ -143,14 +209,14 @@ body {
 }
 .openTable div {
   margin: 12px 0;
-  font-size: 18;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 .openTable table {
   border-collapse: collapse;
   width: 100%;
   padding: 8px;
-  font-size: 14;
+  font-size: 1rem;
 }
 .openTable table tr:nth-child(2n) {
   background-color: white;

@@ -15,17 +15,30 @@
         </div>
         <script src="navbar.js"></script>
 
-        <!-- Header -->
+        <!-- Header
         <div class="headerImage">
-
-        </div>
-        <h1 style="text-align: center;">Welcome to Bridge Academy Public Library</h1>
+        </div>-->
+        <h1 style="text-align: center; margin-top: 96px;">Welcome to Bridge Academy Public Library</h1>
         <h3 style="text-align: center;">currently in development</h3>
+
+        <div class="book-sale-img">
+            <h4>
+                Used Book Sale!
+            </h4>
+            <div class="donation-container">
+                <p>$1 donation per book</p>
+                <p>$5 donation per bag of books</p>
+            </div>
+            <div class="info-sale-container">
+                <p>Over 1000+ books to choose from!</p>
+                <p>Click here for info</p>
+            </div>
+        </div>
 
         <!-- Info 1 -->
         <div id="mainInfo" class="itemsContainer">
             <div v-for="(item, name) in items" class="itemContainer">
-                <div class="itemTitle" class="itemTitle">{{name}}</div>
+                <div class="itemTitle">{{name}}</div>
                 <div v-for="info in item.stuff" class="itemInfo">
                     <h4 class="infoTitle">{{info.title}}</h5>
                     <p v-if="info.subtitle">{{info.subtitle}}</p>
@@ -33,6 +46,14 @@
                     <a v-bind:href="info.link" class="infoLink">More info</a>
                 </div>
                 <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
+            </div>
+        </div>
+
+        <div class="donationContainer">
+            <div class="itemTitle">Donation</div>
+            <div class="donationInfo">
+                <p>If you have current NYT best sellers books that you would like to donate to our collection, call Amalia (librarian) @ <a href="tel:12077378810">(207) 737-8810</a></a></p>
+                <p>We will be able to accept your book donations beginning at the end of April</p>
             </div>
         </div>
 
@@ -53,8 +74,8 @@
                         <div v-else>Sorry, We're Closed</div>
                         <table width="100%">
                             <tr v-for="(time, day) in item.time" v-bind:style="[isSameDay(day) ? isOpen(day) ? 
-                                {'background-color': colors[0], 'font-weight': 600, 'font-size': '16px'} :
-                                {'font-size': '16px', 'font-weight': 600} :
+                                {'background-color': colors[0], 'font-weight': 600} :
+                                {'font-weight': 600} :
                                 {'font-weight': 400}]">
                                 <td>{{day}}</td>
                                 <td>{{time}}</td>

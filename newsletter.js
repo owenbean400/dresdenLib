@@ -1,4 +1,4 @@
-newsletters = {"2021 May":{"about":"\rNew Book by local author:  After many years of ex...","date":"2021 May","link":"newsletter/july2021.html"},"2021 February":{"about":"\rCHIP books: Thanks to a grant from the Community ...","date":"2021 February","link":"newsletter/march2021.html"},"2021 April":{"about":"\rDid you know?  The Maine Infonet Download Library...","date":"2021 April","link":"newsletter/may2021.html"}}
+newsletters = {"2021 March":{"about":"\rFrom the developer -- Currently, newsletter page ...","date":"2021 March","link":"newsletter/march2021.html"}}
 //EJECTION_AWAY
 
 Vue.component("Newsletters", {

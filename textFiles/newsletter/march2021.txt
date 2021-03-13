@@ -1,4 +1,11 @@
-{Date:2021-03-01}
-CHIP books: Thanks to a grant from the Community Health Information Partnership (CHIP), the library has added a variety of health and wellness related books and DVDs on the following topics:
-Recreation for kids, exercise for all ages and stages, healthy eating, anxiety and anger in children and more!
-Come check out our special display and see what we have to offer!
+{date:03/13/2021}
+From the developer -- Currently, newsletter page will take a while to start 
+filling up with information. At the moment I've been redesigning and coding
+the Bridge Academy Public Library webpage. My main goal is to get the website
+up and running with the information needed for people. I want to make sure
+that the information layout is easy to nagivate. Afterwards, I will be working
+on accessiblility and making the events calendar work. I also want to make
+the library catalog look nice, add some new books displayed on the website,
+and form page for book suggestions. If there any questions or feedback on the
+webpage, please feel free to contact the library. Contact information to the
+library is at the bottom of the page in the footer 
