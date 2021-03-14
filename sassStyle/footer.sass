@@ -1,10 +1,16 @@
 @import './index.sass'
 
+$colorFooter: nth($colors, 5)
+$bgFooter: nth($colors, 3)
+$linkColor: nth($colors, 1)
+
 footer
     $footerPadding: 16px
     padding: $footerPadding
     width: calc(100% - #{$footerPadding * 2})
-    background-color: nth($colors, 1)
+    background-color: $bgFooter
+    @media print
+        display: none
 
     .f-grid
         display: grid
@@ -27,12 +33,12 @@ footer
             grid-template-columns: auto
 
         address
-            color: nth($colors, 2)
+            color: $colorFooter
             font-style: normal
             max-width: 300px
 
             a
-                color: nth($colors, 3)
+                color: $linkColor
                 text-decoration: none
                 cursor: pointer
                 &:hover
@@ -41,12 +47,12 @@ footer
         table
             max-width: 260px
             border-collapse: collapse
-            color: nth($colors, 2)
+            color: $colorFooter
 
             td
-                border: nth($colors, 5) 1px solid
+                border: $colorFooter 1px solid
                 padding: 4px
-                color: nth($colors, 2)
+                color: $colorFooter
 
     ol
         $gridSizeLinks: (nth($sizes, 1), 600px, 400px)
@@ -74,13 +80,13 @@ footer
             height: 40px
 
             a
-                color: nth($colors, 2)
+                color: $colorFooter
                 text-decoration: none
                 cursor: pointer
                 &:hover
                     text-decoration: underline
 
     .copyright
-        color: nth($colors, 2)
+        color: $colorFooter
         @media screen and ( max-width: nth($sizes, 1) )
             text-align: center

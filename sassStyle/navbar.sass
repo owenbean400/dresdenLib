@@ -1,9 +1,12 @@
 @import './index.sass'
 
+$colorNav: nth($colors, 5)
+$bgNav: nth($colors, 3)
+
 @mixin navbar
     width: 100%
     height: 64px
-    background-color: nth($colors, 1)
+    background-color: $bgNav
     display: flex
     flex-wrap: wrap
     justify-content: space-between
@@ -14,12 +17,15 @@
     -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.7)
     box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.7)
     box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.7)
+    @media print
+        display: none
 
 @mixin navlogo
-    color: nth($colors, 4)
+    color: $colorNav
     font-size: 24px
     margin-left: 16px
     text-decoration: none
+    font-weight: bold
 
 .navDesk
     @include navbar
@@ -48,7 +54,7 @@
                 list-style-type: none
 
                 a
-                    color: nth($colors, 4)
+                    color: $colorNav
                     padding: 0 16px
                     height: 100%
                     text-decoration: none
@@ -70,7 +76,7 @@
         margin: 0
         width: 100vw
         height: 100vh
-        background-color: nth($colors, 1)
+        background-color: $bgNav
 
         .phoneNavbar
             width: 100%
@@ -83,7 +89,7 @@
             .x
                 height: 32px
                 width: 50px
-                color: nth($colors, 4)
+                color: $colorNav
                 font-size: nth($fontSizes, 5)
                 cursor: pointer
 
@@ -101,7 +107,7 @@
                     font-size: nth($fontSizes, 3)
 
                     a
-                        color: nth($colors, 4)
+                        color: $colorNav
                         text-decoration: none
 
     .hamburger
@@ -111,12 +117,12 @@
         align-items: space-between
         justify-content: space-between
         margin-right: 16px
-        color: nth($colors, 4)
+        color: $colorNav
         font-size: 32px
         cursor: pointer
 
         div
-            background-color: nth($colors, 4)
+            background-color: $colorNav
             width: 40px
             height: 4px
             border-radius: 4px

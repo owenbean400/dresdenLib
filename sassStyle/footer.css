@@ -2,6 +2,9 @@ body {
   padding: 0;
   margin: 0;
   background-color: white;
+  background-image: url("../images/bookTexture.jpg");
+  background-attachment: fixed;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .none {
@@ -11,7 +14,12 @@ body {
 footer {
   padding: 16px;
   width: calc(100% - 32px);
-  background-color: #341C1C;
+  background-color: #dec6b1;
+}
+@media print {
+  footer {
+    display: none;
+  }
 }
 footer .f-grid {
   display: grid;
@@ -49,12 +57,12 @@ footer .footer-info {
   }
 }
 footer .footer-info address {
-  color: #C4A287;
+  color: black;
   font-style: normal;
   max-width: 300px;
 }
 footer .footer-info address a {
-  color: #B07156;
+  color: #341C1C;
   text-decoration: none;
   cursor: pointer;
 }
@@ -64,12 +72,12 @@ footer .footer-info address a:hover {
 footer .footer-info table {
   max-width: 260px;
   border-collapse: collapse;
-  color: #C4A287;
+  color: black;
 }
 footer .footer-info table td {
   border: black 1px solid;
   padding: 4px;
-  color: #C4A287;
+  color: black;
 }
 footer ol {
   list-style-type: none;
@@ -111,7 +119,7 @@ footer ol li {
   height: 40px;
 }
 footer ol li a {
-  color: #C4A287;
+  color: black;
   text-decoration: none;
   cursor: pointer;
 }
@@ -119,7 +127,7 @@ footer ol li a:hover {
   text-decoration: underline;
 }
 footer .copyright {
-  color: #C4A287;
+  color: black;
 }
 @media screen and (max-width: 768px) {
   footer .copyright {
