@@ -2,14 +2,34 @@
 let items = {
   Newsletter: {
     //EJECT_NEWSLETTERS_START
-stuff: [{"title":"2021 March","subtitle":false,"info":"\rFrom the developer -- Currently, newsletter page ...","link":"newsletter/march2021.html"},],
-//EJECT_NEWSLETTERS_END
+    stuff: [
+      {
+        title: "2021 March",
+        subtitle: false,
+        info: "\rFrom the developer -- Currently, newsletter page ...",
+        link: "newsletter/march2021.html",
+      },
+    ],
+    //EJECT_NEWSLETTERS_END
     link: "./newsletters.html",
   },
   Events: {
     //EJECT_EVENTS_START
-stuff: [{"title":" Book , Bake ,  and Plant Sale","subtitle":"5/30/2021","info":"\rOur book, bake, and plant sale...","link":"event/Book,Bake, andPlantSale.html"},{"title":"Summer Reading Program","subtitle":"6/23/2020","info":"\rOur annual Summer Reading Program Begins...","link":"event/summerReadingProgram.html"},],
-//EJECT_EVENTS_END
+    stuff: [
+      {
+        title: " Book , Bake ,  and Plant Sale",
+        subtitle: "5/30/2021",
+        info: "\rOur book, bake, and plant sale...",
+        link: "event/Book,Bake, andPlantSale.html",
+      },
+      {
+        title: "Summer Reading Program",
+        subtitle: "6/23/2020",
+        info: "\rOur annual Summer Reading Program Begins...",
+        link: "event/summerReadingProgram.html",
+      },
+    ],
+    //EJECT_EVENTS_END
     link: "./events.html",
   },
 };
@@ -46,14 +66,14 @@ let about = {
 var mainInfo = new Vue({
   el: "#mainInfo",
   data: {
-    items,
+    items: items,
   },
 });
 
 var aboutInfo = new Vue({
   el: "#about",
   data: {
-    about,
+    about: about,
     date: new Date(), //today's date
     colors: ["#66ff66", "eed"], //color of background when the day is today or opened
   },

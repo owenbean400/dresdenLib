@@ -27,35 +27,8 @@ let footerLinks = {
 };
 
 Vue.component("Foot", {
-  template: `
-        <footer id="footer">
-            <div class="f-grid">
-                <div class="footer-info">
-                    <address>
-                        Email: <a :href="'mailto:' + data.info.contact.email">{{data.info.contact.email}}</a>
-                        <br>
-                        Phone: <a :href="'tel:' + data.info.contact.phone">{{ phoneNumberDisplay(data.info.contact.phone) }}</a>
-                        <br>
-                        Address: <a :href="data.info.contact.address.url" target="_blank" rel="noreferrer">{{data.info.contact.address.street}}</a>
-                    </address>
-                    <table>
-                        <thead>Hours Open</thead>
-                        <tbody>
-                            <tr v-for="(time, day) in data.info.hours">
-                                <td>{{day}}</td>
-                                <td>{{time}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <ol>
-                        <li v-for="(link, name) in data.links"><a :href="beginningDirectory(link)">{{name}}</a></li>
-                    </ol>
-                </div>
-                <p class="copyright">Copyright {{date.getFullYear()}} Bridge Academy Public Library</p>
-            </div>
-        </footer>`,
+  template:
+    '<footer id="footer"><div class="f-grid"><div class="footer-info"><address>Email: <a :href="\'mailto:\' + data.info.contact.email">{{data.info.contact.email}}</a><br>Phone: <a :href="\'tel:\' + data.info.contact.phone">{{ phoneNumberDisplay(data.info.contact.phone) }}</a><br>Address: <a :href="data.info.contact.address.url" target="_blank" rel="noreferrer">{{data.info.contact.address.street}}</a></address><table><thead>Hours Open</thead><tbody><tr v-for="(time, day) in data.info.hours"><td>{{day}}</td><td>{{time}}</td></tr></tbody></table></div><div><ol><li v-for="(link, name) in data.links"><a :href="beginningDirectory(link)">{{name}}</a></li></ol></div><p class="copyright">Copyright {{date.getFullYear()}} Bridge Academy Public Library</p></div></footer>',
   methods: {
     phoneNumberDisplay: function (phone) {
       phone = phone.toString();
@@ -76,7 +49,7 @@ Vue.component("Foot", {
       }
       return phoneString;
     },
-    beginningDirectory(path) {
+    beginningDirectory: function (path) {
       let cd = window.location.href;
       let filePath = window.location.pathname;
       let realPath;
@@ -104,7 +77,7 @@ Vue.component("Foot", {
       return stringCD + path;
     },
   },
-  data() {
+  data: function () {
     return { data: footerLinks, date: new Date() };
   },
 });

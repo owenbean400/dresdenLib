@@ -1,100 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head><title>BAPL</title>
-        <link rel="stylesheet" href="sassStyle/navbar.css"/>
-        <link rel="stylesheet" href="sassStyle/main.css" />
-        <link rel="stylesheet" href="sassStyle/footer.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
-        <!-- Navbar -->
-        <div id="navbar">
-            <Navbar></Navbar>
-        </div>
-        <script src="navbar.js"></script>
+<head>
+    <title>BAPL</title>
+    <link rel="stylesheet" href="sassStyle/navbar.css" />
+    <link rel="stylesheet" href="sassStyle/main.css" />
+    <link rel="stylesheet" href="sassStyle/footer.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-        <!-- Header
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <!-- Navbar -->
+    <div id="navbar">
+        <Navbar></Navbar>
+    </div>
+    <script src="navbar.js"></script>
+
+    <!-- Header
         <div class="headerImage">
         </div>-->
-        <h1 style="text-align: center; margin-top: 96px;">Welcome to Bridge Academy Public Library</h1>
-        <h3 style="text-align: center;">currently in development</h3>
+    <h1 style="text-align: center; margin-top: 96px;">Welcome to Bridge Academy Public Library</h1>
+    <h3 style="text-align: center;">currently in development</h3>
 
-        <div class="book-sale-img">
-            <h4>
-                Used Book Sale!
-            </h4>
-            <div class="donation-container">
-                <p>$1 donation per book</p>
-                <p>$5 donation per bag of books</p>
-            </div>
-            <div class="info-sale-container">
-                <p>Over 1000+ books to choose from!</p>
-                <p>Click here for info</p>
-            </div>
+    <div class="book-sale-img">
+        <h4>
+            Used Book Sale!
+        </h4>
+        <div class="donation-container">
+            <p>$1 donation per book</p>
+            <p>$5 donation per bag of books</p>
         </div>
+        <div class="info-sale-container">
+            <p>Over 1000+ books to choose from!</p>
+            <p>Click here for info</p>
+        </div>
+    </div>
 
-        <!-- Info 1 -->
-        <div id="mainInfo" class="itemsContainer">
-            <div v-for="(item, name) in items" class="itemContainer">
-                <div class="itemTitle">{{name}}</div>
-                <div v-for="info in item.stuff" class="itemInfo">
-                    <h4 class="infoTitle">{{info.title}}</h5>
+    <!-- Info 1 -->
+    <div id="mainInfo" class="itemsContainer">
+        <div v-for="(item, name) in items" class="itemContainer">
+            <div class="itemTitle">{{name}}</div>
+            <div v-for="info in item.stuff" class="itemInfo">
+                <h4 class="infoTitle">{{info.title}}</h5>
                     <p v-if="info.subtitle">{{info.subtitle}}</p>
                     <p class="infoInfo">{{info.info}}</p>
                     <a v-bind:href="info.link" class="infoLink">More info</a>
+            </div>
+            <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
+        </div>
+    </div>
+
+    <div class="donationContainer">
+        <div class="itemTitle">Donation</div>
+        <div class="donationInfo">
+            <p>If you have current NYT best sellers books that you would like to donate to our collection, call Amalia
+                (librarian) @ <a href="tel:12077378810">(207) 737-8810</a></a></p>
+            <p>We will be able to accept your book donations beginning at the end of April</p>
+        </div>
+    </div>
+
+    <!-- Info 2 -->
+    <div id="about" class="itemsContainer">
+        <div v-for="(item, name) in about" class="aboutContainers">
+            <div v-if="name == 'History'">
+                <div class="itemTitle" class="itemTitle">{{name}}</div>
+                <div class="itemInfo">
+                    <p class="infoInfo">{{item.history}}</p>
                 </div>
                 <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
             </div>
-        </div>
-
-        <div class="donationContainer">
-            <div class="itemTitle">Donation</div>
-            <div class="donationInfo">
-                <p>If you have current NYT best sellers books that you would like to donate to our collection, call Amalia (librarian) @ <a href="tel:12077378810">(207) 737-8810</a></a></p>
-                <p>We will be able to accept your book donations beginning at the end of April</p>
-            </div>
-        </div>
-
-        <!-- Info 2 -->
-        <div id="about" class="itemsContainer">
-            <div v-for="(item, name) in about" class="aboutContainers">
-                <div v-if="name == 'History'">
-                    <div class="itemTitle" class="itemTitle">{{name}}</div>
-                    <div class="itemInfo">
-                        <p class="infoInfo">{{item.history}}</p>
-                    </div>
-                    <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
-                </div>
-                <div v-else-if="name == 'Hours'">
-                    <div class="itemTitle">{{name}}</div>
-                    <div class="openTable">
-                        <div v-if="isOpen(dayNumToString(date.getDay()))">We're Currently Open</div>
-                        <div v-else>Sorry, We're Closed</div>
-                        <table width="100%">
-                            <tr v-for="(time, day) in item.time" v-bind:style="[isSameDay(day) ? isOpen(day) ? 
+            <div v-else-if="name == 'Hours'">
+                <div class="itemTitle">{{name}}</div>
+                <div class="openTable">
+                    <div v-if="isOpen(dayNumToString(date.getDay()))">We're Currently Open</div>
+                    <div v-else>Sorry, We're Closed</div>
+                    <table width="100%">
+                        <tr v-for="(time, day) in item.time" v-bind:style="[isSameDay(day) ? isOpen(day) ? 
                                 {'background-color': colors[0], 'font-weight': 600} :
                                 {'font-weight': 600} :
                                 {'font-weight': 400}]">
-                                <td>{{day}}</td>
-                                <td>{{time}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div v-else> 
-                    <div class="itemTitle" class="itemTitle">{{name}}</div>
-                    <ul class="itemInfo">
-                        <li v-for="activity in item.activites">{{activity}}</li>
-                    </ul>
-                    <!--<a v-bind:href="item.link" class="itemLink">More about {{name}}</a>-->
+                            <td>{{day}}</td>
+                            <td>{{time}}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
+            <div v-else>
+                <div class="itemTitle" class="itemTitle">{{name}}</div>
+                <ul class="itemInfo">
+                    <li v-for="activity in item.activites">{{activity}}</li>
+                </ul>
+                <!--<a v-bind:href="item.link" class="itemLink">More about {{name}}</a>-->
+            </div>
         </div>
-        <script src="main.js"></script>
-        <div id="footer">
-            <Foot></Foot>
-        </div><script src="footer.js"></script>
-    </body>
+    </div>
+    <script src="main.js"></script>
+    <div id="footer">
+        <Foot></Foot>
+    </div>
+    <script src="footer.js"></script>
+</body>
+
 </html>

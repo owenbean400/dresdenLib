@@ -104,6 +104,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #dec6b1;
+  left: 0;
 }
 .navPhone .link-container .phoneNavbar {
   width: 100%;
