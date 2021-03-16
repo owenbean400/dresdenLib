@@ -21,7 +21,6 @@ body {
   align-items: center;
   position: fixed;
   left: 0;
-  top: 0;
   -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
@@ -81,7 +80,6 @@ body {
   align-items: center;
   position: fixed;
   left: 0;
-  top: 0;
   -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
@@ -167,6 +165,16 @@ body {
   animation: hideLink 0.33s;
 }
 
+.navShow {
+  top: 0;
+  animation: showNav 0.25s;
+}
+
+.navHide {
+  top: -64px;
+  animation: hideNav 0.33s;
+}
+
 @keyframes showLink {
   0% {
     top: -100vh;
@@ -181,6 +189,22 @@ body {
   }
   100% {
     top: -100vh;
+  }
+}
+@keyframes showNav {
+  0% {
+    top: -64px;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes hideNav {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -64;
   }
 }
 
