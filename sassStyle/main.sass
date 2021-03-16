@@ -124,6 +124,9 @@ body
     overflow: hidden
     list-style-type: none
     margin: 0
+    color: nth($colors, 5)
+    text-decoration: none
+    display: block
 
     li
         padding: 6px 0
@@ -145,6 +148,55 @@ body
         text-decoration: none
         &:hover
             text-decoration: underline
+
+.eventInfo
+    $dateSize: 64px
+    background-color: $itemBackground
+    padding: 12px 16px 12px 12px
+    border-bottom: $itemBorder
+    border-right: $itemBorder
+    border-left: $itemBorder
+    overflow: hidden
+    list-style-type: none
+    margin: 0
+    display: grid
+    color: nth($colors, 5)
+    text-decoration: none
+    @media screen and ( max-width: #{nth($sizes, 1) / 2} )
+        grid-template-rows: auto auto
+    @media screen and ( min-width: #{nth($sizes, 1) / 2} )
+        grid-template-columns: $dateSize auto
+        grid-gap: 16px
+
+    .dateContainer
+        $borderRadiusDate: 24px
+        background-color: nth($colors, 3)
+        color: nth($colors, 5)
+        width: $dateSize
+        border-bottom-left-radius: $borderRadiusDate
+        border-bottom-right-radius: $borderRadiusDate
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-evenly
+        height: $dateSize
+        align-self: center
+        justify-self: center
+
+        .date
+            margin: 0
+            font-size: nth($fontSizes, 3)
+            font-weight: bold
+
+    .infoContainer
+        width: 100%
+
+        .title
+            font-size: nth($fontSizes, 3)
+            margin: 0
+
+        .about
+            margin: 0
 
 .itemLink
     float: right

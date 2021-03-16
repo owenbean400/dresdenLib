@@ -1,5 +1,8 @@
 @import './index.sass'
 
+$itemBorder: solid lightgray 1px
+$itemBackground: whitesmoke
+
 h1
     text-align: center
     margin-top: 80px
@@ -15,20 +18,31 @@ h1
 
     .event-card
         width: 300px
-        background-color: nth($colors, 2)
-        margin: 16px
-        padding: 16px
+        background-color: $itemBackground
         display: flex
         flex-direction: column
         margin: 16px 16px auto 16px
         align-self: start
+        color: nth($colors, 5)
+        text-decoration: none
 
-        .title
-            font-size: 32px
-            margin: 0
+        .eventsInfo
+            background-color: $itemBackground
+            padding: 16px
+            border-bottom: $itemBorder
+            border-right: $itemBorder
+            border-left: $itemBorder
+
+            .title
+                font-size: 32px
+                margin: 0
 
         .date
             margin: 0
+            background-color: nth($colors, 2)
+            padding: 8px 0 8px 8px
+            font-weight: 700
+            font-size: nth($fontSizes, 2)
 
         .about
             margin: 12px 0 12px 0

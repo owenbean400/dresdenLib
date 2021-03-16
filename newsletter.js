@@ -8,8 +8,15 @@ newsletters = {
 //EJECTION_AWAY
 
 Vue.component("Newsletters", {
-  template:
-    '<div class="events-container"><div v-for="(info, title) in newsletters" class="event-card"><h4 class="title">{{title}}</h4><p class="date">{{info.date}}</p><p class="about">{{info.about}}</p><a :href="info.link">View More</a></div></div>',
+  template: `
+    <div class="events-container">
+        <a v-for="(info, title) in newsletters" class="event-card" :href="info.link">
+            <h4 class="date">{{info.date}}</h4>
+            <div class="eventsInfo">
+              <p class="about">{{info.about}}</p>
+            </div>
+        </a>
+    </div>`,
   data: function () {
     return { newsletters: newsletters };
   },

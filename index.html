@@ -38,18 +38,24 @@
         </div>
     </div>
 
-    
-
     <!-- Info 1 -->
     <div id="mainInfo" class="itemsContainer">
         <div v-for="(item, name) in items" class="itemContainer">
             <div class="itemTitle">{{name}}</div>
-            <div v-for="info in item.stuff" class="itemInfo">
+            <a v-if="name == 'Newsletter'" v-for="info in item.stuff" class="itemInfo" v-bind:href="info.link">
                 <h4 class="infoTitle">{{info.title}}</h5>
-                    <p v-if="info.subtitle">{{info.subtitle}}</p>
-                    <p class="infoInfo">{{info.info}}</p>
-                    <a v-bind:href="info.link" class="infoLink">More info</a>
-            </div>
+                <p class="infoInfo">{{info.info}}</p>
+            </a>
+            <a v-else class="eventInfo" :href="info.link">
+                <div class="dateContainer">
+                    <p class="date">{{getMonth(info.subtitle)}}</p>
+                    <p class="date">{{getDay(info.subtitle)}}</p>
+                </div>
+                <div class="infoContainer">
+                    <h4 class="title">{{info.title}}</h4>
+                    <p class="about">{{info.info}}</p>
+                </div>
+            </a>
             <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
         </div>
     </div>
