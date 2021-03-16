@@ -23,7 +23,6 @@ footer {
 }
 footer .f-grid {
   display: grid;
-  max-width: 1200px;
   margin: 0 auto;
 }
 @media screen and (max-width: 768px) {
@@ -40,6 +39,7 @@ footer .footer-info {
   display: grid;
   width: calc(100% - 32px);
   grid-gap: 32px;
+  margin: 0 auto;
 }
 @media screen and (max-width: 1200px) {
   footer .footer-info {
@@ -70,7 +70,7 @@ footer .footer-info address a:hover {
   text-decoration: underline;
 }
 footer .footer-info table {
-  max-width: 260px;
+  max-width: 300px;
   border-collapse: collapse;
   color: black;
 }
@@ -94,29 +94,42 @@ footer ol {
   footer ol {
     display: grid;
     margin: 32px auto;
-    width: 480px;
+    width: auto;
     grid-template-columns: repeat(3, 160px);
+    text-align: center;
+    padding: 0;
+    justify-content: space-between;
   }
 }
 @media screen and (max-width: 600px) and (min-width: 400px) {
   footer ol {
     display: grid;
     margin: 32px auto;
-    width: 320px;
+    width: auto;
     grid-template-columns: repeat(2, 160px);
+    text-align: center;
+    padding: 0;
+    justify-content: space-evenly;
   }
 }
 @media screen and (max-width: 400px) {
   footer ol {
     display: grid;
     margin: 32px auto;
-    width: 160px;
+    width: auto;
     grid-template-columns: repeat(1, 160px);
+    text-align: center;
+    padding: 0;
+    justify-content: center;
   }
 }
 footer ol li {
   width: 160px;
-  height: 40px;
+}
+@media screen and (min-width: 768px) {
+  footer ol li {
+    height: 40px;
+  }
 }
 footer ol li a {
   color: black;
@@ -128,6 +141,7 @@ footer ol li a:hover {
 }
 footer .copyright {
   color: black;
+  margin-left: 16px;
 }
 @media screen and (max-width: 768px) {
   footer .copyright {

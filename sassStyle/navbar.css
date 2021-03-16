@@ -120,7 +120,7 @@ body {
   color: black;
   font-size: 3rem;
   cursor: pointer;
-  margin-right: 24px;
+  margin-right: 16px;
 }
 .navPhone .link-container .links {
   height: calc( 100% - 80px );
