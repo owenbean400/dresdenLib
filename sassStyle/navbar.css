@@ -21,6 +21,7 @@ body {
   align-items: center;
   position: fixed;
   left: 0;
+  z-index: 10;
   -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
@@ -80,6 +81,7 @@ body {
   align-items: center;
   position: fixed;
   left: 0;
+  z-index: 10;
   -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.7);
@@ -171,7 +173,7 @@ body {
 }
 
 .navHide {
-  top: -64px;
+  top: -80px;
   animation: hideNav 0.33s;
 }
 
@@ -193,7 +195,7 @@ body {
 }
 @keyframes showNav {
   0% {
-    top: -64px;
+    top: -80px;
   }
   100% {
     top: 0;
@@ -204,7 +206,7 @@ body {
     top: 0;
   }
   100% {
-    top: -64;
+    top: -80;
   }
 }
 
