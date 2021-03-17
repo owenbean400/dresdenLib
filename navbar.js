@@ -55,9 +55,9 @@ Vue.component("Navbar", {
       this.showPhoneLinks = false;
     },
     navShowing: function (event) {
-      this.showNav = this.prevScrollPosition - window.scrollY >= 0;
+      this.showNav =
+        this.prevScrollPosition - window.scrollY >= 0 || window.scrollY < 10;
       this.prevScrollPosition = window.scrollY;
-      console.log(this.showNav);
     },
     beginningDirectory: function (path) {
       let cd = window.location.href;

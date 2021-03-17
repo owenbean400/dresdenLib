@@ -2,21 +2,26 @@
 <html lang="en">
 
 <head>
-    <title>BAPL</title>
-    <link rel="stylesheet" href="sassStyle/navbar.css" />
+    <title>Bridge Academy Public Library</title>
+    <meta name="description" 
+        content="The Bridge Academy Public Library is the public library of Dresden, Maine. We offer book rentals, free use of
+            computers, and a cozy place to relax. Our librarian Amalia, will be happy to welcome you to an assortment
+            of books to read from. Bridge Academy Public Library has some fun activities as such as playing
+            basketball, playing pickleball, and reading. Come on down, we're located on 44 Middle Rd in Dresden."/>
+    <meta name="author" content="Amalia"/>
     <link rel="stylesheet" href="sassStyle/main.css" />
-    <link rel="stylesheet" href="sassStyle/footer.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
     <!-- Navbar -->
     <div id="navbar">
         <Navbar></Navbar>
     </div>
-    <script src="navbar.js"></script>
+    <script src="navbar.js"></script><link rel="stylesheet" href="sassStyle/navbar.css" />
 
     <!-- Header
         <div class="headerImage">
@@ -58,6 +63,15 @@
             </a>
             <a v-bind:href="item.link" class="itemLink">More about {{name}}</a>
         </div>
+    </div>
+
+    <link rel="stylesheet" href="sassStyle/carousel.css" />
+    <div id="carousel">
+        <Carousel
+            :isbns="[9780525582168, 9781524763169, 9780593209738, 9780525596677, 9780374194321,9780525538882, 9780571359288]"
+            title="New Bookzz"
+            >
+        </Carousel>
     </div>
 
     <div class="donationContainer">
@@ -107,8 +121,8 @@
     <script src="main.js"></script>
     <div id="footer">
         <Foot></Foot>
-    </div>
-    <script src="footer.js"></script>
+    </div><link rel="stylesheet" href="sassStyle/footer.css" />
+    <script src="footer.js"></script><script src="carousel.js"></script>
 </body>
 
 </html>

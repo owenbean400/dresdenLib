@@ -1,15 +1,4 @@
-events = {
-  " Book , Bake ,  and Plant Sale": {
-    about: "\rOur book, bake, and plant sale...",
-    date: "5/30/2021",
-    link: "event/Book,Bake, andPlantSale.html",
-  },
-  "Summer Reading Program": {
-    about: "\rOur annual Summer Reading Program Begins...",
-    date: "6/23/2020",
-    link: "event/summerReadingProgram.html",
-  },
-};
+events = {" Book , Bake ,  and Plant Sale":{"about":"\rOur book, bake, and plant sale...","date":"5/30/2021","link":"event/Book,Bake, andPlantSale.html"},"Summer Reading Program":{"about":"\rOur annual Summer Reading Program Begins...","date":"6/23/2020","link":"event/summerReadingProgram.html"}}
 //EJECTION_AWAY
 
 Vue.component("Events", {
