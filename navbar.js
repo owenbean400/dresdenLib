@@ -55,8 +55,11 @@ Vue.component("Navbar", {
       this.showPhoneLinks = false;
     },
     navShowing: function (event) {
-      this.showNav =
-        this.prevScrollPosition - window.scrollY >= 0 || window.scrollY < 10;
+      let isIE = navigator.userAgent.indexOf("Trident/7.0") != -1;
+      console.log("IE: " + isIE);
+      this.showNav = !isIE
+        ? this.prevScrollPosition - window.scrollY >= 0 || window.scrollY < 10
+        : true;
       this.prevScrollPosition = window.scrollY;
     },
     beginningDirectory: function (path) {

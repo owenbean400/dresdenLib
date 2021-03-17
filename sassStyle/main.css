@@ -207,14 +207,17 @@ body {
   display: grid;
   color: black;
   text-decoration: none;
+  display: -ms-grid;
 }
 @media screen and (max-width: 384px) {
   .eventInfo {
-    grid-template-rows: auto auto;
+    -ms-grid-rows: 76px auto;
+    grid-template-row: auto auto;
   }
 }
 @media screen and (min-width: 384px) {
   .eventInfo {
+    -ms-grid-columns: 76px auto;
     grid-template-columns: 64px auto;
     grid-gap: 16px;
   }
@@ -233,6 +236,18 @@ body {
   align-self: center;
   justify-self: center;
 }
+@media screen and (max-width: 384px) {
+  .eventInfo .dateContainer {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+}
+@media screen and (min-width: 384px) {
+  .eventInfo .dateContainer {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+}
 .eventInfo .dateContainer .date {
   margin: 0;
   font-size: 1.5rem;
@@ -240,6 +255,18 @@ body {
 }
 .eventInfo .infoContainer {
   width: 100%;
+}
+@media screen and (max-width: 384px) {
+  .eventInfo .infoContainer {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+}
+@media screen and (min-width: 384px) {
+  .eventInfo .infoContainer {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
 }
 .eventInfo .infoContainer .title {
   font-size: 1.5rem;

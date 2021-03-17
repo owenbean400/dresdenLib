@@ -162,9 +162,12 @@ body
     display: grid
     color: nth($colors, 5)
     text-decoration: none
+    display: -ms-grid
     @media screen and ( max-width: #{nth($sizes, 1) / 2} )
-        grid-template-rows: auto auto
+        -ms-grid-rows: #{$dateSize + 12} auto
+        grid-template-row: auto auto
     @media screen and ( min-width: #{nth($sizes, 1) / 2} )
+        -ms-grid-columns: #{$dateSize + 12} auto
         grid-template-columns: $dateSize auto
         grid-gap: 16px
 
@@ -182,6 +185,12 @@ body
         height: $dateSize
         align-self: center
         justify-self: center
+        @media screen and ( max-width: #{nth($sizes, 1) / 2} )
+            -ms-grid-row: 1
+            -ms-grid-column: 1
+        @media screen and ( min-width: #{nth($sizes, 1) / 2} )
+            -ms-grid-row: 1
+            -ms-grid-column: 1
 
         .date
             margin: 0
@@ -190,6 +199,12 @@ body
 
     .infoContainer
         width: 100%
+        @media screen and ( max-width: #{nth($sizes, 1) / 2} )
+            -ms-grid-row: 2
+            -ms-grid-column: 1
+        @media screen and ( min-width: #{nth($sizes, 1) / 2} )
+            -ms-grid-row: 1
+            -ms-grid-column: 2
 
         .title
             font-size: nth($fontSizes, 3)
