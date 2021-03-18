@@ -69,7 +69,7 @@ Vue.component("Carousel", {
     for (let i = 0; i < Object.keys(this.isbn).length; i++) {
       let num = Object.keys(this.isbn)[i];
       axios
-        .get("https:www.googleapis.com/books/v1/volumes?q=isbn" + num)
+        .get("https://www.googleapis.com/books/v1/volumes?q=isbn" + num)
         .then((response) => {
           this.isbn[num]["src"] =
             response.data.items[0].volumeInfo.imageLinks.thumbnail;
