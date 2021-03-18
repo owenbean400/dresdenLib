@@ -68,6 +68,7 @@ Vue.component("Carousel", {
   mounted: function () {
     for (let i = 0; i < Object.keys(this.isbn).length; i++) {
       let num = Object.keys(this.isbn)[i];
+      console.log("test: " + num);
       axios
         .get("https://www.googleapis.com/books/v1/volumes?q=isbn" + num)
         .then((response) => {
