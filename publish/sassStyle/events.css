@@ -1,0 +1,75 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  background-image: url("../images/bookTexture.jpg");
+  background-attachment: fixed;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.none {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.events-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 8px 0 32px 0;
+}
+@media screen and (min-width: 744px) {
+  .events-container {
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width: 744px) {
+  .events-container {
+    justify-content: center;
+  }
+}
+.events-container .event-card {
+  width: 300px;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 16px auto 16px;
+  align-self: start;
+  color: black;
+  text-decoration: none;
+}
+.events-container .event-card .eventsInfo {
+  background-color: whitesmoke;
+  padding: 16px;
+  border-bottom: solid lightgray 1px;
+  border-right: solid lightgray 1px;
+  border-left: solid lightgray 1px;
+}
+.events-container .event-card .eventsInfo .title {
+  font-size: 32px;
+  margin: 0;
+}
+.events-container .event-card .date {
+  margin: 0;
+  background-color: #C4A287;
+  padding: 8px 0 8px 8px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.events-container .event-card .about {
+  margin: 12px 0 12px 0;
+}
+.events-container .event-card a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-end;
+}
+.events-container .event-card a:hover {
+  text-decoration: underline;
+}
+
+/*# sourceMappingURL=events.css.map */

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bridge Academy Public Library | {{TITLE}}</title>
+    <meta name="description" content="{{OOPBA}}" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/site.webmanifest">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div id="navbar">
+        <Navbar></Navbar>
+    </div>
+    <link rel="stylesheet" href="../sassStyle/navbar.css" />
+    <script src="../navbar.js"></script>
+
+    <section style="width: calc(100% - 64px); padding: 0 32px;">
+        <h1 style="margin: 120px 0 0 0; text-align: center; font-size: 32px">{{TITLE}}</h1>
+        <h3 style="text-align: center; font-weight: normal; font-size: 12px; margin: 0">{{DATE}}</h3>
+        <p style="margin: 32px auto; max-width: 1000px;">{{OOPBA}}</p>
+    </section>
+
+    <div id="footer">
+        <Foot></Foot>
+    </div>
+    <link rel="stylesheet" href="../sassStyle/footer.css" />
+    <script src="../footer.js"></script>
+</body>
+
+</html>

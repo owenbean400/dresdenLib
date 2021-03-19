@@ -1,0 +1,30 @@
+$colors: (#341C1C, #C4A287, #dec6b1, white, black, #545454)
+$fontSizes: (0.75rem, 1rem, 1.5rem, 2rem, 3rem, 4rem)
+$fontFamily: "arial"
+$sizes: (768px, 960px, 1200px)
+$itemBorder: solid lightgray 1px
+$itemBackground: whitesmoke
+
+body
+    padding: 0
+    margin: 0
+    background-color: nth($colors, 4)
+    background-image: url("../images/bookTexture.jpg")
+    background-attachment: fixed
+    font-family: "Times New Roman", Times, serif
+
+.none
+    display: none
+
+@mixin header
+    background-color: nth($colors, 2)
+    padding: 8px 0 8px 8px
+    font-weight: 700
+    font-size: nth($fontSizes, 2)
+    margin: 0
+
+@mixin container
+    background-color: $itemBackground
+    border-bottom: $itemBorder
+    border-right: $itemBorder
+    border-left: $itemBorder
