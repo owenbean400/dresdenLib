@@ -1,0 +1,68 @@
+@import './index.sass'
+
+h1
+    margin: 100px 0 12px 0
+    text-align: center
+
+@mixin grid($num, $width, $margin, $padding)
+    $calcWidth: ($width + ($margin * 2) + ($padding * 2))
+    @media screen and ( max-width: #{($calcWidth * ($num + 1) + $margin * (2 * ($num + 1))) - 1} ) and ( min-width: #{(($calcWidth * $num) + ($margin * 2 * $num))})
+        grid-template-columns: repeat($num, $calcWidth)
+
+.staffs-container
+    $marginContainer: 16px
+    $paddingContainer: 16px
+    $widthContainer: 240px
+    display: grid
+    justify-content: space-around
+    width: calc(100vw - 32px)
+    overflow: hidden
+    @for $i from 1 through 10
+        @include grid($i, $widthContainer, $marginContainer, $paddingContainer)
+    @media screen and ( max-width: ( (($widthContainer + ($marginContainer * 2) + ($paddingContainer * 2))) + ($marginContainer * 2)))
+        grid-template-columns: calc(100vw - #{($marginContainer * 2)})
+    @media screen and ( min-width: ( (($widthContainer + ($marginContainer * 2) + ($paddingContainer * 2)) * 11) + ($marginContainer * 2 * 11)) )
+        grid-template-columns: repeat(11, ($widthContainer + ($marginContainer * 2) + ($paddingContainer * 2)))
+
+    .staff-container
+        max-width: $widthContainer
+        display: grid
+        padding: 16px
+        background-color: nth($colors, 2)
+        margin: 16px
+        @media screen and ( max-width: $widthContainer + ($marginContainer * 2) + ($paddingContainer * 2) )
+            grid-template-columns: auto
+        @media screen and ( min-width: $widthContainer + ($marginContainer * 2) + ($paddingContainer * 2) + 1 )
+            grid-template-columns: 64px #{$widthContainer - 80px}
+
+        .img-container
+            $size: 64px
+            border-radius: 100%
+            width: $size
+            height: $size
+            overflow: hidden
+            background-color: nth($colors, 1)
+            align-self: center
+            border: nth($colors, 1) 1px solid
+
+            img
+                width: $size
+                height: $size
+                color: nth($colors, 2)
+
+        .text-container
+            width: 100%
+            padding: 0 32px 0 16px
+
+            h3
+                margin: 0 0 0 0
+                font-size: nth($fontSizes, 3)
+
+            h4
+                margin: 0 0 0 0
+                font-size: nth($fontSizes, 2)
+                font-weight: normal
+
+            p
+                margin: 0 0 0 0
+                font-size: nth($fontSizes, 1)

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+        <!-- Navbar -->
+        <div id="navbar">
+            <Navbar></Navbar>
+        </div>
+        <script async src="navbar.js"></script>
+        <link rel="stylesheet" href="sassStyle/navbar.css" />
+
+        <h1>Staff Page</h1>
+
+        <div id="staff" class="staffs-container">
+            <div v-for="staff in staffs" class="staff-container">
+                <div class="img-container">
+                    <img v-if="staff.src !== ''" :src="'./images/staff/' + staff.src" :alt="staff.name" />
+                    <img v-else src="./images/staff/empty_person.svg" :alt="staff.name" />
+                </div>
+                <div class="text-container">
+                    <h3>{{staff.name}}</h3>
+                    <h4>{{staff.title}}</h4>
+                    <p>{{staff.contact}}</p>
+                </div>
+            </div>
+        </div>
+        <script src="staff.js"></script>
+
+        <div id="footer">
+            <Foot></Foot>
+        </div>
+        <link rel="stylesheet" href="sassStyle/footer.css" />
+        <script async src="footer.js"></script>
+        <link async rel="stylesheet" href="sassStyle/staff.css" />
+    </body>
+</html>

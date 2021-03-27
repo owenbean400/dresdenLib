@@ -24,6 +24,7 @@ let footerLinks = {
     Newsletter: beginningDirectory("newsletters.html"),
     Events: beginningDirectory("events.html"),
     Catalog: "http://opac.libraryworld.com/opac/signin?libraryname=bapl",
+    Staff: beginningDirectory("staff.html"),
   },
 };
 
