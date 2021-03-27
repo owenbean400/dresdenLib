@@ -100,6 +100,13 @@ h1 {
 .donation div {
   padding: 12px;
 }
+.donation p {
+  margin: 12px 0;
+}
+.donation p .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
 .about {
   margin: 16px;
@@ -163,7 +170,7 @@ h1 {
   }
 }
 .photo div {
-  padding: 12px;
+  padding: 6px;
 }
 
 .where {
@@ -195,6 +202,48 @@ h1 {
 }
 .where div {
   padding: 12px;
+}
+.where div address {
+  font-style: normal;
+}
+.where div address a {
+  text-decoration: none;
+  color: initial;
+}
+.where div address a:hover {
+  text-decoration: underline;
+}
+
+.carsousel-container {
+  position: relative;
+}
+.carsousel-container svg {
+  width: 32px;
+  height: 32px;
+  opacity: 0.9;
+  position: absolute;
+  top: calc(50% - 22px);
+  color: #341C1C;
+  cursor: pointer;
+}
+.carsousel-container svg:first-of-type {
+  left: 12px;
+}
+.carsousel-container svg:last-of-type {
+  right: 12px;
+}
+.carsousel-container img {
+  width: calc(100% - 120px);
+  height: 100%;
+  max-width: 520px;
+  display: block;
+  margin: 0 auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /*# sourceMappingURL=bookSale.css.map */

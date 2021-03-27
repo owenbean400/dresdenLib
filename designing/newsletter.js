@@ -1,10 +1,4 @@
-newsletters = {
-  "2021 March": {
-    about: "\rFrom the developer -- Currently, newsletter page ...",
-    date: "2021 March",
-    link: "newsletter/march2021.html",
-  },
-};
+newsletters = {"2021 March":{"about":"\rFrom the developer -- Currently, newsletter page ...","date":"2021 March","link":"newsletter/march2021.html"}}
 //EJECTION_AWAY
 
 Vue.component("Newsletters", {

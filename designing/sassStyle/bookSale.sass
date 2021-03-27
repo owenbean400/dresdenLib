@@ -61,6 +61,13 @@ h1
     div
         padding: 12px
 
+    p
+        margin: 12px 0
+
+        .price
+            font-size: nth($fontSizes, 3)
+            font-weight: bold
+
 .about
     margin: 16px
     @media screen and ( min-width: nth($sizes, 2) )
@@ -102,7 +109,7 @@ h1
         -ms-grid-column: 1
         -ms-grid-row: 3
     div
-        padding: 12px
+        padding: 6px
 
 .where
     margin: 16px
@@ -123,3 +130,35 @@ h1
         -ms-grid-row: 4
     div
         padding: 12px
+
+        address
+            font-style: normal
+
+            a
+                @include link
+
+.carsousel-container
+    position: relative
+
+    svg
+        $sizeArrow: 32px
+        $paddingArrow: 12px
+        width: $sizeArrow
+        height: $sizeArrow
+        opacity: 0.9
+        position: absolute
+        top: calc(50% - #{($sizeArrow + $paddingArrow) / 2})
+        color: nth($colors, 1)
+        cursor: pointer
+        &:first-of-type
+            left: $paddingArrow
+        &:last-of-type
+            right: $paddingArrow
+
+    img
+        width: calc(100% - 120px)
+        height: 100%
+        max-width: 520px
+        display: block
+        margin: 0 auto
+        @include noSelect

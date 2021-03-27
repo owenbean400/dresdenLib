@@ -1,0 +1,1 @@
+Sorry, Server is acting as a gateway or proxy and recieved invalid response

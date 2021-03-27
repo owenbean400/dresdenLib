@@ -32,9 +32,12 @@ body {
   flex-direction: column;
   align-content: center;
   justify-content: space-evenly;
+  -ms-align-content: center;
+  -ms-justify-content: space-evenly;
   text-shadow: 0px 0px 10px black;
   border-top: #C4A287 20px solid;
   border-bottom: #C4A287 20px solid;
+  text-decoration: none;
 }
 .book-sale-img h4 {
   font-size: 3rem;
@@ -47,11 +50,9 @@ body {
 .book-sale-img .donation-container p {
   margin: 0;
   font-size: 1.5rem;
-  text-align: left;
+  text-align: center;
 }
 .book-sale-img .info-sale-container {
-  justify-self: baseline;
-  align-self: center;
   margin: 0;
 }
 .book-sale-img .info-sale-container p {
